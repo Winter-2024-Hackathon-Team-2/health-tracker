@@ -1,17 +1,16 @@
 import React from 'react'
 import {Routes, Route} from "react-router-dom";
-import NotFound from './NotFound'
 import HomePage from '../home/HomePage';
-import Header from './Header';
-import NavBar from './NavBar';
+import DailySurveyForm from '../employee/DailySurveyForm';
 
 function Routing() {
   return (<>
-    <Header />
-    <NavBar />
+    
     <Routes>
-        <Route path="/" element = {<HomePage />} />
-        <Route element = {<NotFound />} />           
+       
+      <Route path="/survey" element = {<DailySurveyForm />} />
+      <Route path="/*" element = {<HomePage />} />   
+              
     </Routes>
   </>)
 }

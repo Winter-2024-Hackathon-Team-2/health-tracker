@@ -9,7 +9,7 @@ function NavBar() {
             <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link to="/history">History</Link>
+            <Link to="/survey">Daily Survey</Link>
           </li>
           <li>
             <Link to="/">Home</Link>
