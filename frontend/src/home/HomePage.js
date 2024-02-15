@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LoginPage from "./Login";
 // Adding some icons for aesthetic purposes
 
 const HomePage = () => {
