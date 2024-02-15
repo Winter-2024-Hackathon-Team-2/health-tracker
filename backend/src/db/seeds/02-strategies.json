@@ -1,0 +1,22 @@
+[
+    {
+       "strategy_coping_type": "stress",
+        "strategy_description": "",
+        "strategy_resources": ""
+    },
+    {
+        "strategy_coping_type": "sleep",
+         "strategy_description": "",
+         "strategy_resources": ""
+     },
+     {
+        "strategy_coping_type": "physical-activity",
+         "strategy_description": "",
+         "strategy_resources": ""
+     },
+     {
+        "strategy_coping_type": "general",
+         "strategy_description": "",
+         "strategy_resources": ""
+     }
+]

@@ -4,7 +4,8 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTableIfNotExists("users", (table) => {
-    table.integer("user_id").primary();
+    table.increments("user_id").primary();
+    table.uuid("user_password").defaultTo(knex.raw("uuid_generate_v4()"));
     table.string("user-gender");
     table.integer("user_age");
     table.string("occupation");
@@ -14,6 +15,9 @@ exports.up = function(knex) {
     table.integer("user_stress");
     table.string("user_bmi");
     table.string("user_blood_pressure");
+    table.string("user_heart_rate");
+    table.string("user_daily_steps");
+    table.string("user_sleep_disorder");
     table.timestamps(true, true);
   })
 };
