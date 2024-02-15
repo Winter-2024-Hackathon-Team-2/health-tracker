@@ -7,11 +7,9 @@ exports.up = function(knex) {
     table.increments("strategy_id").primary();
     table.string("strategy_coping_type");
     table.string("strategy_description");
-    table.string("strategy_link_one").nullable();
-    table.string("strategy_link_two").nullable();
-    table.string("strategy_link_three").nullable();
-    table.string("strategy_link_four").nullable();
-    table.string("strategy_link_five").nullable();
+    table.string("strategy_video").nullable();
+    table.string("strategy_photo").nullable();
+    table.string("strategy_article").nullable();
   })
 };
 

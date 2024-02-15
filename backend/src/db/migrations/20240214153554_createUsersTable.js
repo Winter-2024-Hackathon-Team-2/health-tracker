@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  return knex.schema.createTableIfNotExists("users", (table) => {
+  return knex.schema.createTable("users", (table) => {
     table.increments("user_id").primary();
     table.uuid("user_password").defaultTo(knex.raw("uuid_generate_v4()"));
     table.string("user-gender");
@@ -27,5 +27,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists("users");
+  return knex.schema.dropTable("users");
 };
