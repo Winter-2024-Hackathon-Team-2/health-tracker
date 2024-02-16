@@ -1,17 +1,17 @@
 const knex = require("../db/connection");
 
 function list() {
-  return knex("Track").select("*");
+  return knex("track").select("*");
 }
 
 function read(trackId) {
-  return knex("Track")
+  return knex("track")
     .select("*")
     .where({ track_activity_id: trackId })
     .first();
 }
 function read2(track_activity_id) {
-  return knex("Track as t")
+  return knex("track as t")
     .join("users as u", "t.user_id", "u.user_id")
     .join("admins as a", "a.user_id", "a.user_id")
     .select("t.*")
