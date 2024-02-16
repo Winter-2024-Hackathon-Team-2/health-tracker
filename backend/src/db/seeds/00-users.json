@@ -1,0 +1,44 @@
+[
+  {
+    "user-gender": "",
+    "user_age": "",
+    "occupation": "",
+    "user_sleep_duration": "",
+    "user_sleep_quality": "",
+    "user_physical_activity": "",
+    "user_stress": "",
+    "user_bmi": "",
+    "user_blood_pressure": "",
+    "user_heart_rate": "",
+    "user_daily_steps": "",
+    "user_sleep_disorder": ""
+  },
+  {
+    "user-gender": "Male",
+    "user_age": "27",
+    "occupation": "Software Engineer",
+    "user_sleep_duration": "6.1",
+    "user_sleep_quality": "6",
+    "user_physical_activity": "42",
+    "user_stress": "6",
+    "user_bmi": "Overweight",
+    "user_blood_pressure": "126/83",
+    "user_heart_rate": "77",
+    "user_daily_steps": "4200",
+    "user_sleep_disorder": "None"
+  },
+  {
+    "user-gender": "Male",
+    "user_age": "28",
+    "occupation": "Doctor",
+    "user_sleep_duration": "6.2",
+    "user_sleep_quality": "6",
+    "user_physical_activity": "60",
+    "user_stress": "8",
+    "user_bmi": "Normal",
+    "user_blood_pressure": "125/80",
+    "user_heart_rate": "75",
+    "user_daily_steps": "10000",
+    "user_sleep_disorder": "None"
+  }
+]

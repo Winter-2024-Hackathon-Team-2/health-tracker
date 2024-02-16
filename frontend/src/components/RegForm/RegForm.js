@@ -53,11 +53,6 @@ const RegForm = ({ mode }) => {
   return (
     <div className="auth-form-container">
       <div className="auth-form-card">
-        {/* <img
-          src={LearningLoom}
-          alt="Learning Loom Logo"
-          className="learning-loom-logo"
-        /> */}
         <h2>{mode === "login" ? "Login" : "Register"}</h2>
         <form onSubmit={handleFormSubmit}>
           <input
