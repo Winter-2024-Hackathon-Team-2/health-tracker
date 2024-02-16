@@ -12,6 +12,7 @@ import { reauthenticate } from "./features/auth/authSlice.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 import RegForm from "./components/RegForm/RegForm.js";
 import HomePage from "./pages/HomePage/HomePage.js";
+import NavBar from "./layout/NavBar.js";
 // import Profile from "./pages/Profile/Profile.js";
 // import ProjectDetail from "./components/ProjectDetail/ProjectDetail.js";
 // import ProjectLesson from "./components/ProjectLesson/ProjectLesson.js";
@@ -30,7 +31,7 @@ const App = () => {
 
   return (
     <Router>
-      {/* <Navbar1 /> */}
+     <NavBar />
       <div className="app-container">
         <Routes>
           <Route
