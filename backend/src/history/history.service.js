@@ -10,11 +10,11 @@ function read(trackId) {
     .where({ track_activity_id: trackId })
     .first();
 }
-function read2(track_activity_id) {
+function read2(user_id) {
   return knex("track as t")
     .join("users as u", "t.user_id", "u.user_id")
     .select("t.*")
-    .where({ "t.track_activity_id": track_activity_id });
+    .where({ "t.user_id": user_id });
 }
 
 module.exports = {

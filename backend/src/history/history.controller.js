@@ -22,7 +22,7 @@ function list(req, res, next) {
 }
 
 async function historyExists2(req, res, next) {
-  const history = await historyService.read2(req.params.track_activity_id);
+  const history = await historyService.read2(req.params.user_id);
   if (history) {
     res.locals.history = history;
     return next();
