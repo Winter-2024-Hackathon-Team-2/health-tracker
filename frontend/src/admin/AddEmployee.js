@@ -53,7 +53,7 @@ function AddEmployee() {
         <button
           type="button"
           className="btn btn-secondary mr-3"
-          onClick={() => navigate.goBack()}
+          onClick={() => navigate(-1)}
         >
           Cancel
         </button>
