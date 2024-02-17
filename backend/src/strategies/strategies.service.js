@@ -1,15 +1,17 @@
-function list(copingType){
-    return knex("strategies")
+function list(strategyType) {
+  return knex("strategies")
     .select("*")
-    .where({"strategy_coping_type":copingType})
-};
+    .where({ strategy_coping_type: strategyType });
+}
 
-function search(copingType){
-    return knex("strategies")
-    .whereRaw()
+function search(strategy) {
+  return knex("strategies").whereRaw(
+    "strategy_coping_type like ?",
+    `%${strategy}%`
+  );
 }
 
 module.exports = {
-    list,
-    search
-}
+  list,
+  search,
+};
