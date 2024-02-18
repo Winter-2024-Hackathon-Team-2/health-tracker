@@ -3,7 +3,7 @@ const strategiesRouter = require("./strategies/strategies.router");
 
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
-const express = require("Express");
+const express = require("express");
 const cors = require("cors");
 
 const errorHandler = require("./errors/errorHandler");

@@ -1,3 +1,5 @@
+const knex = require("../db/connection");
+
 function list(strategyType) {
   return knex("strategies")
     .select("*")
