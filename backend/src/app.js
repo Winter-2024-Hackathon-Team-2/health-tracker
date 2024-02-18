@@ -1,4 +1,5 @@
 const path = require("path");
+const strategiesRouter = require("./strategies/strategies.router");
 
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
@@ -13,8 +14,10 @@ const historyRouter = require("./history/history.router");
 const usersRouter = require("./users/users.router");
 app.use(cors());
 app.use(express.json());
+
 app.use("/track", historyRouter);
 app.use("/users", usersRouter);
+app.use("/strategies", strategiesRouter);
 app.use(errorHandler);
 app.use(notFound);
 module.exports = app;
