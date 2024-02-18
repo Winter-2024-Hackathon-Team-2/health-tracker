@@ -25,7 +25,9 @@ function read(user_id) {
           ...row,
           is_admin: row.is_admin !== null 
       }));
-    });
+    
+    })
+    .then((user) => user[0])
 }
 function update(updatedUser) {
   return knex("users")
