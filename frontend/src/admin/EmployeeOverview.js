@@ -47,7 +47,6 @@ function EmployeeOverview() {
     setSortConfig({ key, direction: newDirection });
   };
 
-  // Function to sort employees based on the current sort configuration
   const sortedEmployees = () => {
     if (!sortConfig.key) return employees;
 

@@ -28,13 +28,11 @@ function AddEmployee() {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      // Call the create function from the users service module
       const newUser = await createUser(formData);
       console.log("New user created:", newUser);
-      navigate(-1); // Navigate back to the previous page
+      navigate(-1); 
     } catch (error) {
       console.error('Error adding employee:', error.message);
-      // Handle error (e.g., show error message to the user)
     }
   }
 
