@@ -1,11 +1,25 @@
 import React, { useEffect } from "react";
-import { useParams, useLocation, useParams } from "react-router-dom";
-import { listStrategiesByType } from "../utils/api";
+
 
 export default function StrategiesList({strategies}) {
-  const { strategyType } = useParams();
-  const [strategies, setStrategies] = useState([]);
 
+  const strategiesDisplay = strategies.map((strategy) => {
+    return (
+        <li>
+            <h3>{strategy.strategy_description}</h3>
+            <img src={strategy.strategy_photo} alt={strategy.description} width="400"/>
+            <a href={strategy.strategy_article}>Article</a>
+        </li>
+    )
+  })
 
-  useEffect(() => {});
+  return (
+    <>
+    <section>
+        <ul>
+            {strategiesDisplay}
+        </ul>
+    </section>
+    </>
+  )
 }

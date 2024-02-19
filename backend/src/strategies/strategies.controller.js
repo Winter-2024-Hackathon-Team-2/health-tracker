@@ -12,7 +12,7 @@ async function listByStrategyType(req, res, next) {
 }
 
 async function search(req, res, next) {
-  const strategy = req.query.strategy;
+  const strategy = req.query.strategyType;
   if (strategy) {
     const data = await service.search(strategy);
     res.json({ data });
@@ -25,9 +25,10 @@ async function search(req, res, next) {
 async function list(req, res, next) {
   const data = await service.list();
   res.json({ data });
+  console.log(data)
 }
 
 module.exports = {
   listByStrategyType: [asyncErrorBoundary(listByStrategyType)],
-  search: [asyncErrorBoundary(asyncErrorBoundary(search), asyncErrorBoundary(list))]
+  search: [asyncErrorBoundary(search), asyncErrorBoundary(list)]
 };
