@@ -19,7 +19,7 @@ export default function StrategiesSearch() {
       return <p>No strategies were found.</p>;
     }
   }
-
+console.log(strategyType)
   function handleSubmit(e) {
     e.preventDefault();
     const abortController = new AbortController();
