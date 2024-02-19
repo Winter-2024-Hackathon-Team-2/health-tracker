@@ -1,6 +1,8 @@
 const historyService = require("./history.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");
+const today = new Date().toJSON().slice(0, 10);
+console.log(today)
 
 function historyExists(req, res, next) {
   historyService
@@ -74,7 +76,7 @@ function read(req, res) {
 
 async function create(req, res) {
   let newHistory = {
-    ...req.body.data, user_id: req.params.user_id
+    ...req.body.data, user_id: req.params.user_id, track_date: today
   }
   let data = await historyService.create(newHistory);
   res.status(201).json({ data });
