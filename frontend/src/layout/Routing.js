@@ -11,6 +11,7 @@ import NewSurvey from "../employee/NewSurvey";
 import Dashboard from "../dashboard/Dashboard";
 import EditUser from "../users/EditUser";
 import EditSurvey from "../employee/EditSurvey";
+import Surveyboard from "../employee/Surveyboard";
 
 function Routing() {
   return (<>
