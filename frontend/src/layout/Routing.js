@@ -9,6 +9,7 @@ import NewSurvey from "../employee/NewSurvey";
 import Dashboard from "../dashboard/Dashboard";
 import EditUser from "../users/EditUser";
 import EditSurvey from "../employee/EditSurvey";
+
 function Routing() {
   return (
     <>
@@ -17,11 +18,12 @@ function Routing() {
         <Route path="/admin" element={<EmployeeOverview />} />
         <Route path="/track" element={<Surveyboard />} />
         <Route path="/track/new" element={<NewSurvey />} />
-        <Route path="/track/:activityId/edit" element={<EditSurvey />} />
+        <Route path="/track/:trackId/edit" element={<EditSurvey />} />
         <Route path="/" element={<HomePage />} />
+
         <Route path="/users/new" element={<NewUser />} />
         <Route path="/users/:userId/edit" element={<EditUser />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/users" element={<Dashboard />} />
       </Routes>
     </>
   );

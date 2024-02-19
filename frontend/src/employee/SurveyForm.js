@@ -17,13 +17,13 @@ export default function SurveyForm({
         <div className="form-group">
           <label htmlFor="user_id">User ID</label>
           <input
-            type="text"
+            type="integer"
             className="form-control"
             id="user_id"
             name="user_id"
             onChange={handleChange}
             value={formData.user_id}
-            placeholder="number of minutes being active yesterday"
+            placeholder="user Id from Users Table"
           />
         </div>
         <div className="form-group">

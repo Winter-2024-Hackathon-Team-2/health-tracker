@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { readHistoryActivityId, updateSurvey } from "../utils/api";
+import { updateSurvey, readSurvey } from "../utils/api";
 import { useParams, useNavigate } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
 import SurveyForm from "./SurveyForm";
 
 export default function EditSurvey() {
   const initialFormState = {
-    user_id: "",
+    user_id: 0,
     track_physical_activity: 0,
     track_sleep_duration: 0,
     track_sleep_quality: 0,
@@ -14,7 +14,7 @@ export default function EditSurvey() {
     track_focus_area: "",
   };
   const history = useNavigate();
-  const { activityId } = useParams();
+  const { trackId } = useParams();
 
   const [formData, setFormData] = useState({ ...initialFormState });
   const [error, setError] = useState(null);
@@ -24,10 +24,7 @@ export default function EditSurvey() {
     const abortController = new AbortController();
     async function getData() {
       try {
-        const response = await readHistoryActivityId(
-          activityId,
-          abortController.signal
-        );
+        const response = await readSurvey(trackId, abortController.signal);
         setFormData(response);
       } catch (error) {
         setError(error);
@@ -36,7 +33,7 @@ export default function EditSurvey() {
     getData();
     return () => abortController.abort();
     // eslint-disable-next-line
-  }, [userId]);
+  }, [trackId]);
 
   const handleChange = ({ target }) => {
     setFormData({

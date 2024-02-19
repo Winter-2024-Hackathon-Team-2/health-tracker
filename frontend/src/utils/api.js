@@ -96,9 +96,12 @@ export async function createSurvey(data, signal) {
   };
   return await fetchJson(url, options, {});
 }
-
+export async function readSurvey(trackId, signal) {
+  const url = new URL(`${API_BASE_URL}/track/${trackId}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
 export async function updateSurvey(data) {
-  const url = `${API_BASE_URL}/track/${data.track_activity_id}`;
+  const url = `${API_BASE_URL}/track/${data.user_id}`;
   const options = {
     method: "PUT",
     headers,

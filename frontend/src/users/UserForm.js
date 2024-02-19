@@ -7,6 +7,11 @@ export default function UserForm({
   formData,
   history,
 }) {
+  function handleCancel() {
+    if (window.confirm("Do you want to exit from editing this user?")) {
+      history(-1);
+    }
+  }
   return (
     <div className="p-2">
       <form
@@ -52,6 +57,19 @@ export default function UserForm({
             required
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="user_bmi">User BMI</label>
+          <input
+            type="number"
+            className="form-control"
+            id="user_bmi"
+            name="user_bmi"
+            placeholder="User BMI"
+            value={formData.user_bmi}
+            onChange={handleNumber}
+            required
+          />
+        </div>
         <div className="sm:mt-4">
           <button
             type="submit"
@@ -62,7 +80,7 @@ export default function UserForm({
           </button>
           <button
             type="button"
-            onClick={history.goBack}
+            onClick={() => handleCancel()}
             className="focus:outline-none bg-gray-100 hover:bg-teal-600 hover:text-black text-teal-700 font-bold py-2 px-3 rounded-full m-2 md:mx-3"
           >
             Cancel

@@ -17,11 +17,9 @@ function NavBar() {
         <li>
           <Link to="/admin">Admin</Link>
         </li>
+
         <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/track">Surveyboard</Link>
+          <Link to="/users">Registration</Link>
         </li>
       </ul>
     </nav>

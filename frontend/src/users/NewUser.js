@@ -6,8 +6,9 @@ import UserForm from "./UserForm";
 
 export default function NewUser() {
   const initialFormState = {
-    user_gender: "",
     user_age: 0,
+    user_gender: "",
+
     occupation: "",
   };
 
