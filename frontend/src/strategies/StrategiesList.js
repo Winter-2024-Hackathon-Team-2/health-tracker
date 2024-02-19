@@ -1,6 +1,10 @@
 import React from "react";
 
+//simple list component that handles how the strategies are rendered
+
 export default function StrategiesList({ strategies }) {
+
+
   const strategiesDisplay = strategies.map((strategy) => {
     return (
       <li key={strategy.strategy_id}>
@@ -27,6 +31,7 @@ export default function StrategiesList({ strategies }) {
       </li>
     );
   });
+
 
   return (
     <>
