@@ -1,62 +1,80 @@
-//import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../utils/api";
 
 function AddEmployee() {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  function handleChange({ target }) {}
+  const [formData, setFormData] = useState({
+    user_gender: "", 
+    user_age: 0, 
+    occupation: "", 
+    user_sleep_duration: 0.0, 
+    user_sleep_quality: 0.0, 
+    user_physical_activity: "", 
+    user_stress: 0, 
+    user_bmi: "", 
+    user_blood_pressure: "", 
+    user_heart_rate: "", 
+    user_daily_steps: "", 
+    user_sleep_disorder: "", 
+  });
 
   const navigate = useNavigate();
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const newUser = await createUser(formData);
+      console.log("New user created:", newUser);
+      navigate(-1); 
+    } catch (error) {
+      console.error('Error adding employee:', error.message);
+    }
+  }
 
   return (
     <div>
       <h1>Add an Employee</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="First Name">First Name</label>
+          <label htmlFor="user_gender">Gender</label>
           <input
-            name="first_name"
-            className="form-control"
-            id="first_name"
+            name="user_gender"
+            id="user_gender"
             type="text"
+            value={formData.user_gender}
             onChange={handleChange}
-            required={true}
+            required
           />
         </div>
         <div>
-          <label htmlFor="Last Name">Last Name</label>
+          <label htmlFor="user_age">Age</label>
           <input
-            name="last_name"
-            className="form-control"
-            id="last_name"
-            type="text"
+            name="user_age"
+            id="user_age"
+            type="number"
+            value={formData.user_age}
             onChange={handleChange}
-            required={true}
+            required
           />
         </div>
         <div>
-          <label htmlFor="User ID">User ID</label>
+          <label htmlFor="occupation">Occupation</label>
           <input
-            name="user_id"
-            className="form-control"
-            id="user-id"
+            name="occupation"
+            id="occupation"
             type="text"
+            value={formData.occupation}
             onChange={handleChange}
-            required={true}
+            required
           />
         </div>
-        <button type="submit" className="btn btn-primary mr-3">
-          Submit
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary mr-3"
-          onClick={() => navigate(-1)}
-        >
-          Cancel
-        </button>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={() => navigate(-1)}>Cancel</button>
       </form>
     </div>
   );

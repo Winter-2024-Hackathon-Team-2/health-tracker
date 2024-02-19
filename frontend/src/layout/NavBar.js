@@ -21,6 +21,13 @@ function NavBar() {
         <li>
           <Link to="/users">Registration</Link>
         </li>
+          <li>
+            {/*TODO: implement function that replaces :strategyType with {strategyType} from user survey*/}
+            <Link to="/strategies/:strategyType">Strategies</Link>
+          </li>
+          <li>
+            <Link to="/strategies">Search</Link>
+          </li>
       </ul>
     </nav>
   );
