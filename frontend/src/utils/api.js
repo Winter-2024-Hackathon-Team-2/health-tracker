@@ -86,17 +86,39 @@ export async function listHistory(signal) {
   const url = new URL(`${API_BASE_URL}/track`);
   return await fetchJson(url, { headers, signal }, []);
 }
+export async function createSurvey(data, signal) {
+  const url = `${API_BASE_URL}/track/new`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data }),
+    signal,
+  };
+  return await fetchJson(url, options, {});
+}
 
+export async function updateSurvey(data) {
+  const url = `${API_BASE_URL}/track/${data.track_activity_id}`;
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({ data }),
+  };
+  return await fetchJson(url, options, {});
+}
 export async function readUserHistory(userId, signal) {
-  const url = new URL(`${API_BASE_URL}/history/users/${userId}`);
+  const url = new URL(`${API_BASE_URL}/track/users/${userId}`);
   return await fetchJson(url, { headers, signal }, []);
 }
 
 export async function readHistoryActivityId(activityId, signal) {
-  const url = new URL(`${API_BASE_URL}/history/${activityId}`);
+  const url = new URL(`${API_BASE_URL}/track/${activityId}`);
   return await fetchJson(url, { headers, signal }, []);
 }
-
+export async function deleteSurvey(activityId) {
+  const url = `${API_BASE_URL}/track/${activityId}`;
+  return await fetchJson(url, { method: "DELETE", headers }, {});
+}
 export async function listStrategies(signal) {
   const url = new URL(`${API_BASE_URL}/strategies`);
   return await fetchJson(url, { headers, signal }, []);

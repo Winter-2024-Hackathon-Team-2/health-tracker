@@ -9,13 +9,19 @@ function NavBar() {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/survey">Daily Survey</Link>
+          <Link to="/track">Daily Survey</Link>
         </li>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/admin">Admin</Link>
+        </li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+        <li>
+          <Link to="/track">Surveyboard</Link>
         </li>
       </ul>
     </nav>

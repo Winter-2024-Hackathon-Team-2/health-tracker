@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { createUser } from "../utils/api";
+import { createSurvey } from "../utils/api";
 import { useNavigate } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
-import UserForm from "./UserForm";
+import SurveyForm from "./SurveyForm";
 
-export default function NewUser() {
+export default function NewSurvey() {
   const initialFormState = {
-    user_gender: "",
-    user_age: 0,
-    occupation: "",
+    user_id: "",
+    track_physical_activity: 0,
+    track_sleep_duration: 0,
+    track_sleep_quality: 0,
+    track_stress_level: 0,
+    track_focus_area: "",
   };
 
   const history = useNavigate();
@@ -48,7 +51,7 @@ export default function NewUser() {
     event.preventDefault();
     const controller = new AbortController();
     try {
-      await createUser(formData, controller.signal);
+      await createSurvey(formData, controller.signal);
 
       setFormData({ ...initialFormState });
     } catch (error) {
@@ -59,10 +62,10 @@ export default function NewUser() {
 
   return (
     <div>
-      <h2>Create a New User</h2>
+      <h2>Create a New Survey</h2>
 
       <ErrorAlert error={error} />
-      <UserForm
+      <SurveyForm
         handleSubmit={handleSubmit}
         handleNumber={handleNumber}
         handleChange={handleChange}

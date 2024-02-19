@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { createUser } from "../utils/api";
-import { useNavigate } from "react-router";
+import { readUser, updateUser } from "../utils/api";
+import { useParams, useNavigate } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
 import UserForm from "./UserForm";
 
-export default function NewUser() {
+export default function EditUser() {
   const initialFormState = {
     user_gender: "",
-    user_age: 0,
+    user_age: "",
     occupation: "",
   };
-
   const history = useNavigate();
+  const { userId } = useParams();
+
   const [formData, setFormData] = useState({ ...initialFormState });
   const [error, setError] = useState(null);
 
@@ -20,7 +21,8 @@ export default function NewUser() {
     const abortController = new AbortController();
     async function getData() {
       try {
-        setFormData({ ...initialFormState });
+        const response = await readUser(userId, abortController.signal);
+        setFormData(response);
       } catch (error) {
         setError(error);
       }
@@ -28,7 +30,7 @@ export default function NewUser() {
     getData();
     return () => abortController.abort();
     // eslint-disable-next-line
-  }, []);
+  }, [userId]);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -48,8 +50,8 @@ export default function NewUser() {
     event.preventDefault();
     const controller = new AbortController();
     try {
-      await createUser(formData, controller.signal);
-
+      await updateUser(formData);
+      history(-1);
       setFormData({ ...initialFormState });
     } catch (error) {
       setError(error);
@@ -58,9 +60,10 @@ export default function NewUser() {
   };
 
   return (
-    <div>
-      <h2>Create a New User</h2>
-
+    <div className="w-full h-full min-h-screen bg-no-repeat bg-cover bg-top">
+      <h2 className="font-bold text-teal-700 text-center text-3xl md:text-5xl mx-2 p-3">
+        Edit User
+      </h2>
       <ErrorAlert error={error} />
       <UserForm
         handleSubmit={handleSubmit}
