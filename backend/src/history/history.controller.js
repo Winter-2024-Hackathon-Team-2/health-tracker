@@ -2,7 +2,6 @@ const historyService = require("./history.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../errors/hasProperties");
 const today = new Date().toJSON().slice(0, 10);
-console.log(today)
 
 function historyExists(req, res, next) {
   historyService
