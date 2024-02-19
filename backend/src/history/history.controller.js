@@ -17,7 +17,8 @@ function historyExists(req, res, next) {
 
 function inputIsValid(req, res, next) {
   const { data = {} } = req.body;
-  data.forEach((input) => {
+  console.log(data)
+  for (let input of Object.keys(data)) {
     if (input !== "track_physical_activity") {
       if (data.input < 1 || data.input > 10) {
         next({
@@ -26,7 +27,7 @@ function inputIsValid(req, res, next) {
         });
       }
     }
-  });
+  };
   return next();
 }
 
@@ -49,7 +50,7 @@ async function historyExists2(req, res, next) {
 }
 
 function hasData(req, res, next) {
-  const data = req.body;
+  const {data = {} } = req.body;
   if (!data) {
     return next({
       status: 400,
@@ -72,8 +73,10 @@ function read(req, res) {
 }
 
 async function create(req, res) {
-  let data = await historyService.create(req.body.data);
-  console.log(data);
+  let newHistory = {
+    ...req.body.data, user_id: req.params.user_id
+  }
+  let data = await historyService.create(newHistory);
   res.status(201).json({ data });
 }
 
@@ -92,8 +95,8 @@ module.exports = {
   read2: [asyncErrorBoundary(historyExists2), read],
   create: [
     hasData,
-    inputIsValid,
     hasRequiredProperties,
+    inputIsValid,
     physicalActivityIsValid,
     asyncErrorBoundary(create),
   ],
