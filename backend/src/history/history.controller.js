@@ -1,5 +1,6 @@
 const historyService = require("./history.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const hasProperties = require("../errors/hasProperties");
 
 function historyExists(req, res, next) {
   historyService
@@ -14,11 +15,28 @@ function historyExists(req, res, next) {
     .catch(next);
 }
 
-function list(req, res, next) {
-  historyService
-    .list()
-    .then((data) => res.json({ data }))
-    .catch(next);
+function inputIsValid(req, res, next) {
+  const { data = {} } = req.body;
+  data.forEach((input) => {
+    if (input !== "track_physical_activity") {
+      if (data.input < 1 || data.input > 10) {
+        next({
+          status: 400,
+          message: `Invalid input. Input must be between 1 and 10.`,
+        });
+      }
+    }
+  });
+  return next();
+}
+
+function physicalActivityIsValid(req, res, next) {
+  const { data = {} } = req.body;
+  const physicalActivity = data.track_physical_activity;
+  if (physicalActivity > 90 || physicalActivity < 1){
+    next({status:400, message:`Invalid input. Input must be between 1 and 90.`})
+  }
+  return next();
 }
 
 async function historyExists2(req, res, next) {
@@ -30,10 +48,6 @@ async function historyExists2(req, res, next) {
   next({ status: 404, message: `History cannot be found.` });
 }
 
-function read(req, res) {
-  const { history: data } = res.locals;
-  res.json({ data });
-}
 function hasData(req, res, next) {
   const data = req.body;
   if (!data) {
@@ -45,14 +59,42 @@ function hasData(req, res, next) {
   next();
 }
 
+function list(req, res, next) {
+  historyService
+    .list()
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+
+function read(req, res) {
+  const { history: data } = res.locals;
+  res.json({ data });
+}
+
 async function create(req, res) {
   let data = await historyService.create(req.body.data);
   console.log(data);
   res.status(201).json({ data });
 }
+
+const properties = [
+  "track_physical_activity",
+  "track_sleep_duration",
+  "track_sleep_quality",
+  "track_stress_level",
+];
+
+const hasRequiredProperties = hasProperties(properties);
+
 module.exports = {
   list,
   read: [asyncErrorBoundary(historyExists), read],
   read2: [asyncErrorBoundary(historyExists2), read],
-  create: [hasData, asyncErrorBoundary(create)],
+  create: [
+    hasData,
+    inputIsValid,
+    hasRequiredProperties,
+    physicalActivityIsValid,
+    asyncErrorBoundary(create),
+  ],
 };
