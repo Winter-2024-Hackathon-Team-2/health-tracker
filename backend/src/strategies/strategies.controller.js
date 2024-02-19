@@ -1,6 +1,5 @@
 const service = require("./strategies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const { as } = require("../db/connection");
 
 async function listByStrategyType(req, res, next) {
   const strategyType = req.params.strategyType;
