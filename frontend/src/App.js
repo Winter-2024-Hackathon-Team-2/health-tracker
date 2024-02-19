@@ -1,9 +1,16 @@
-import './index.css';
-import Layout from './layout/Layout';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./layout/Layout";
 
+/**
+ * Defines the root application component.
+ * @returns {JSX.Element}
+ */
 function App() {
   return (
-    <Layout />
+    <Routes>
+      <Route path="/*" element={<Layout />} />
+    </Routes>
   );
 }
 

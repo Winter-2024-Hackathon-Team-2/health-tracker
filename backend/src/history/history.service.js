@@ -16,9 +16,14 @@ function read2(user_id) {
     .select("t.*")
     .where({ "t.user_id": user_id });
 }
-
+function create(track) {
+  return knex("track")
+    .insert(track, "*")
+    .then((createdRecords) => createdRecords[0]);
+}
 module.exports = {
   list,
   read,
   read2,
+  create,
 };
