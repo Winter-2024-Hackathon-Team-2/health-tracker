@@ -1,10 +1,16 @@
 const service = require("./strategies.service");
 
-async function list(req, res, next) {
+async function listByStrategyType(req, res, next) {
   const strategyType = req.params.strategyType;
+  if (strategyType){
+    const data = await service.list(strategyType);
+    res.json({ data });
+  }
+}
+
+async function list(req, res, next) {
   const data = await service.list(strategyType);
   res.json({ data });
-  console.log(data)
 }
 
 async function search(req, res, next) {
