@@ -34,9 +34,25 @@ function read(req, res) {
   const { history: data } = res.locals;
   res.json({ data });
 }
+function hasData(req, res, next) {
+  const data = req.body;
+  if (!data) {
+    return next({
+      status: 400,
+      message: `Request body must have data.`,
+    });
+  }
+  next();
+}
 
+async function create(req, res) {
+  let data = await historyService.create(req.body.data);
+  console.log(data);
+  res.status(201).json({ data });
+}
 module.exports = {
   list,
   read: [asyncErrorBoundary(historyExists), read],
   read2: [asyncErrorBoundary(historyExists2), read],
+  create: [hasData, asyncErrorBoundary(create)],
 };
