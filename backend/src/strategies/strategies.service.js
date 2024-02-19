@@ -1,6 +1,6 @@
 const knex = require("../db/connection");
 
-function list(strategyType) {
+function listByStrategyType(strategyType) {
   return knex("strategies")
     .select("*")
     .where({ strategy_coping_type: strategyType });
@@ -13,7 +13,13 @@ function search(strategy) {
   );
 }
 
+function list(){
+  return knex("strategies")
+  .select("*")
+}
+
 module.exports = {
   list,
+  listByStrategyType,
   search,
 };
