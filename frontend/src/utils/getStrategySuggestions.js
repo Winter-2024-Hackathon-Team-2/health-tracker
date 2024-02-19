@@ -7,7 +7,7 @@ Default to none if survey is incomplete
 */
 
 function calculatePercentage(input, maxValue){
-    return input/()
+    return input/maxValue * 100;
 }
 
 export default function getStrategySuggestions(surveyInputs){
@@ -16,8 +16,12 @@ export default function getStrategySuggestions(surveyInputs){
         stress: 0,
         "physical-activity": 0
     }
-
-    for (let input of surveyInputs){
-        
+    for (let [key, value] of Object.entries(surveyInputs)){
+        if (key === "track_physical_activity"){
+            strategyTypes["physical_activity"] = calculatePercentage(value, 90);
+        }
+        if (key === "track_stress_level"){
+            strategyTypes.stress = calculatePercentage(value, 10);
+        }
     }
 }

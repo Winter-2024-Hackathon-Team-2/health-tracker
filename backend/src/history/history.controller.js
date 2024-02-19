@@ -19,10 +19,9 @@ function historyExists(req, res, next) {
 
 function inputIsValid(req, res, next) {
   const { data = {} } = req.body;
-  console.log(data)
-  for (let input of Object.keys(data)) {
-    if (input !== "track_physical_activity") {
-      if (data.input < 1 || data.input > 10) {
+  for (let [key, value] of Object.entries(data)) {
+    if (key !== "track_physical_activity") {
+      if (value < 1 || value > 10) {
         next({
           status: 400,
           message: `Invalid input. Input must be between 1 and 10.`,
