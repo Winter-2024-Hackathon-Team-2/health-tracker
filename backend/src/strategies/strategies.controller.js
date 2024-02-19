@@ -12,7 +12,7 @@ async function listByStrategyType(req, res, next) {
 }
 
 async function search(req, res, next) {
-  const strategy = req.query.strategyType;
+  const strategy = req.query.strategy;
   if (strategy) {
     const data = await service.search(strategy);
     res.json({ data });

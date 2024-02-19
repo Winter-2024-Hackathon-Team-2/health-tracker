@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { listStrategies } from "../utils/api";
+import { useLocation } from "react-router-dom";
 import StrategiesList from "./StrategiesList";
 
+//user can search for coping strategies
 
 export default function StrategiesSearch() {
   const [strategies, setStrategies] = useState([]);
   const [strategyType, setStrategyType] = useState("");
 
+  //updates url to include search params
+  
+  const location = useLocation();
+  const queryParams = new URLSearchParams({ strategy: strategyType });
+  location.search = queryParams.toString();
 
+  //TODO update so that Not Found text renders only after user searches
   function displayStrategies(strategies) {
     if (strategies.length) {
       return (
@@ -16,10 +24,10 @@ export default function StrategiesSearch() {
         </div>
       );
     } else {
-      return <p>No strategies were found.</p>;
+      return <p>No strategies were found, try searching for another term.</p>;
     }
   }
-console.log(strategyType)
+
   function handleSubmit(e) {
     e.preventDefault();
     const abortController = new AbortController();
@@ -29,9 +37,11 @@ console.log(strategyType)
     return () => abortController.abort();
   }
 
+
   function handleChange({ target }) {
     setStrategyType(target.value);
   }
+
 
   return (
     <>
