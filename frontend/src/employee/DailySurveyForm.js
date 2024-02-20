@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function DailySurveyForm(){
     const initialFormData = {
-        activity_time: 0,
-        sleep_amount: 0,
-        sleep_quality: 0,
-        work_stress: 0,
+        track_physical_activity: 0,
+        track_sleep_duration: 0,
+        track_sleep_quality: 0,
+        track_stress_level: 0,
     }
     const navigate = useNavigate();
     const [formData, setFormData]=useState(initialFormData)
@@ -32,15 +32,15 @@ function DailySurveyForm(){
             <form onSubmit={handleSubmit} className="w-1/2 bg-gray-100 p-8 rounded-lg shadow-md">
                 <h1 className="text-2xl font-bold mb-4 text-center">Daily Survey</h1>
                 <div className="form-group mb-4">
-                    <label htmlFor="activity_time" className="block text-gray-700 font-bold mb-2">
+                    <label htmlFor="track_physical_activity" className="block text-gray-700 font-bold mb-2">
                         Sleep Quality
                     </label>
                     <input 
                         type="range" 
                         className="form-control range"
-                        id="sleep_quality" 
-                        name="sleep_quality" 
-                        value={formData.sleep_quality} 
+                        id="track_sleep_quality" 
+                        name="track_sleep_quality" 
+                        value={formData.track_sleep_quality} 
                         onChange={handleInput}
                         min= '1'
                         max= '10'
@@ -60,41 +60,41 @@ function DailySurveyForm(){
                     </div>
                 </div>
                 <div className="form-group mb-4">
-                    <label htmlFor="sleep_amount" className="block text-gray-700 font-bold mb-2">
-                        Sleep Amount
+                    <label htmlFor="track_sleep_duration" className="block text-gray-700 font-bold mb-2">
+                        Hours Slept
                     </label>
                     <input 
                         type="number" 
                         className="form-control" 
-                        id="sleep_amount" 
-                        name="sleep_amount" 
+                        id="track_sleep_duration" 
+                        name="track_sleep_duration" 
                         onChange={handleInput}
-                        value={formData.sleep_amount}
+                        value={formData.track_sleep_duration}
                         placeholder="Hours of sleep last night" />
                 </div>
                 <div className="form-group mb-4">
-                    <label htmlFor="activity_time" className="block text-gray-700 font-bold mb-2">
+                    <label htmlFor="track_physical_activity" className="block text-gray-700 font-bold mb-2">
                         Time spent active
                     </label>
                     <input 
                         type="number" 
                         className="form-control"
-                        id="activity_time"
-                        name="activity_time"
+                        id="track_physical_activity"
+                        name="track_physical_activity"
                         onChange={handleInput}
-                        value={formData.activity_time}
+                        value={formData.track_physical_activity}
                         required />
                 </div>
                 <div className="form-group mb-4">
-                    <label htmlFor="work_stress" className="block text-gray-700 font-bold mb-2">
+                    <label htmlFor="track_stress_level" className="block text-gray-700 font-bold mb-2">
                         Work Stress
                     </label>
                     <input 
                         type="range" 
                         className="form-control range"
-                        id="work_stress" 
-                        name="work_stress" 
-                        value={formData.work_stress} 
+                        id="track_stress_level" 
+                        name="track_stress_level" 
+                        value={formData.track_stress_level} 
                         onChange={handleInput}
                         min= '1'
                         max= '10'
