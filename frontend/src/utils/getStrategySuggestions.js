@@ -1,3 +1,4 @@
+
 //Utility function that returns the priority coping strategy
 
 function calculatePercentage(input, maxValue) {
@@ -39,3 +40,4 @@ export default function getStrategySuggestions(surveyInputs) {
 
   console.log(focusArea);
 }
+

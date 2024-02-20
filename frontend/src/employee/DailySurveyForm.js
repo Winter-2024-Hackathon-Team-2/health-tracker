@@ -5,10 +5,10 @@ import getStrategySuggestions from "../utils/getStrategySuggestions";
 
 function DailySurveyForm(){
     const initialFormData = {
-        activity_time: 0,
-        sleep_amount: 0,
-        sleep_quality: 0,
-        work_stress: 0,
+        track_physical_activity: 0,
+        track_sleep_duration: 0,
+        track_sleep_quality: 0,
+        track_stress_level: 0,
     }
     const navigate = useNavigate();
     const [formData, setFormData]=useState(initialFormData)
@@ -33,54 +33,54 @@ function DailySurveyForm(){
             <h1>This is the correct page</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="activity_time">
+                    <label htmlFor="track_physical_activity">
                         Activity Time
                     </label>
                     <input 
                         type="number" 
                         className="form-control" 
-                        id="activity_time" 
-                        name="activity_time"
+                        id="track_physical_activity" 
+                        name="track_physical_activity"
                         onChange={handleInput}
-                        value={formData.activity_time}
+                        value={formData.track_physical_activity}
                         placeholder="number of minutes being active yesterday" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="sleep_amount">
+                    <label htmlFor="track_sleep_duration">
                         Sleep Amount
                     </label>
                     <input 
                         type="number" 
                         className="form-control" 
-                        id="sleep_amount" 
-                        name="sleep_amount" 
+                        id="track_sleep_duration" 
+                        name="track_sleep_duration" 
                         onChange={handleInput}
-                        value={formData.sleep_amount}
+                        value={formData.track_sleep_duration}
                         placeholder="Hours of sleep last night" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="sleep_quality">
+                    <label htmlFor="track_sleep_quality">
                         Sleep Quality
                     </label>
                     <input 
                         type="number" 
                         className="form-control"
-                        id="sleep_quality"
-                        name="sleep_quality"
+                        id="track_sleep_quality"
+                        name="track_sleep_quality"
                         onChange={handleInput}
-                        value={formData.sleep_quality}
+                        value={formData.track_sleep_quality}
                         required />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="work_stress">
+                    <label htmlFor="track_stress_level">
                         Work Stress
                     </label>
                     <input 
                         type="number" 
                         className="form-control"
-                        id="work_stress" 
-                        name="work_stress" 
-                        value={formData.work_stress} 
+                        id="track_stress_level" 
+                        name="track_stress_level" 
+                        value={formData.track_stress_level} 
                         onChange={handleInput}
                         required />
                 </div>
