@@ -1,9 +1,10 @@
+import { useParams } from "react-router-dom";
 import React from "react";
 import EditSurvey from "./EditSurvey";
 const SurveyCard = ({ survey, handleCancel }) => {
   return (
     <>
-      {
+      {survey && (
         <div>
           <p>Track ID: {survey.track_activity_id}</p>
           <p>User ID: {survey.user_id}</p>
@@ -32,7 +33,7 @@ const SurveyCard = ({ survey, handleCancel }) => {
             </button>
           </div>
         </div>
-      }
+      )}
     </>
   );
 };
