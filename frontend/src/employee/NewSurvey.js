@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createSurvey } from "../utils/api";
 import { useNavigate } from "react-router";
 import ErrorAlert from "../layout/ErrorAlert";
-import SurveyForm from "./SurveyForm";
+import DailySurveyForm from "./DailySurveyForm";
 
 export default function NewSurvey() {
   const initialFormState = {
@@ -65,13 +65,7 @@ export default function NewSurvey() {
       <h2>Create a New Survey</h2>
 
       <ErrorAlert error={error} />
-      <SurveyForm
-        handleSubmit={handleSubmit}
-        handleNumber={handleNumber}
-        handleChange={handleChange}
-        formData={formData}
-        history={history}
-      />
+      <DailySurveyForm />
     </div>
   );
 }
