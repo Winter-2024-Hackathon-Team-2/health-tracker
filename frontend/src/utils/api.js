@@ -133,7 +133,17 @@ export async function readUserHistory(userId, signal) {
     return await fetchJson(url, { headers, signal }, [])
   }
 
-export async function listStrategiesByType(strategyId, signal) {
-  const url = new URL(`${API_BASE_URL}/strategies/${strategyId}`);
-  return await fetchJson(url, { headers, signal }, []);
-}
+  export async function listStrategiesByType(strategyId, signal) {
+    const url = new URL(`${API_BASE_URL}/strategies/${strategyId}`);
+    return await fetchJson(url, { headers, signal }, [])
+  }
+
+  export async function login(username, password) {
+    const url = `${API_BASE_URL}/users/login`;
+    const options = {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ user_id: username, user_password: password }),
+    };
+    return await fetchJson(url, options, {});
+  }

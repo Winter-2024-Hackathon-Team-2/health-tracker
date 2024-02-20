@@ -115,7 +115,7 @@ function DailySurveyForm(){
                 </div>
                 <div className="flex justify-center">
                     <button type="submit" className="btn btn-primary mr-3">Submit</button>
-                    <button type="button" className="btn btn-secondary mr-3" onClick={()=>navigate(-1)}>Cancel</button>
+                    <button type="button" className="btn btn-secondary mr-3" onClick={()=>navigate('/strategies')}>Cancel</button>
                 </div>
             </form>
         </div>)
