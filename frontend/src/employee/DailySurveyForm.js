@@ -2,6 +2,7 @@ import React from "react";
 import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import getStrategySuggestions from "../utils/getStrategySuggestions";
+import { createSurvey } from "../utils/api";
 
 function DailySurveyForm(){
     const initialFormData = {
@@ -12,6 +13,7 @@ function DailySurveyForm(){
     }
     const navigate = useNavigate();
     const [formData, setFormData]=useState(initialFormData)
+    const userId = localStorage.getItem("user_id");
 
     function handleInput(event){
         setFormData({
@@ -22,9 +24,12 @@ function DailySurveyForm(){
 
     function handleSubmit(event){
         event.preventDefault();
-        console.log(formData);
         let strategyType = getStrategySuggestions(formData);
-        console.log(strategyType)
+        try {
+        createSurvey(formData, userId)
+        } catch {
+            console.error();
+        }
         setFormData(initialFormData);
         navigate(`/strategies/${strategyType}`)
     }

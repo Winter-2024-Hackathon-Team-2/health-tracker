@@ -9,7 +9,7 @@ export default function getStrategySuggestions(surveyInputs) {
   let strategyTypes = {
     sleep: 0,
     stress: 0,
-    physical_activity: 0,
+    "physical-activity": 0,
   };
 
   const sleepQuality = surveyInputs.track_sleep_quality;
@@ -22,7 +22,7 @@ export default function getStrategySuggestions(surveyInputs) {
   strategyTypes.stress =
     100 - calculatePercentage(Number(surveyInputs.track_stress_level), 10);
   strategyTypes.sleep = calculatePercentage(sleepAverage, 10);
-  strategyTypes.physical_activity = calculatePercentage(
+  strategyTypes["physical-activity"] = calculatePercentage(
     Number(surveyInputs.track_physical_activity),
     90
   );
