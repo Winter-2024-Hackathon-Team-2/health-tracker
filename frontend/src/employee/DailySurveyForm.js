@@ -1,6 +1,7 @@
 import React from "react";
 import { useState} from "react";
 import { useNavigate } from "react-router-dom";
+import getStrategySuggestions from "../utils/getStrategySuggestions";
 
 function DailySurveyForm(){
     const initialFormData = {
@@ -22,6 +23,7 @@ function DailySurveyForm(){
     function handleSubmit(event){
         event.preventDefault();
         console.log(formData);
+        getStrategySuggestions(formData);
         setFormData(initialFormData);
 
     }
