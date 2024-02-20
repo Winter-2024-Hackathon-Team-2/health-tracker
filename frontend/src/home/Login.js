@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { login } from '../utils/api';
+import moodscapev2 from '../images/moodscapev2.png'
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -52,8 +53,9 @@ function LoginPage() {
 
   return (
     <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
-      <div className='w-full bg-gray-200 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0'>
-        <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
+      <div className='w-full bg-gray-200 rounded-lg shadow md:mt-0 sm:max-w-sm xl:p-0'>
+        <div className='p-6 space-y-2 md:space-y-2 sm:p-4 flex flex-col justify-center items-center'>
+        <img src={moodscapev2} alt="Logo" className="w-32 mb-1" />
           <h2 className='text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl'>
             Login
           </h2>
