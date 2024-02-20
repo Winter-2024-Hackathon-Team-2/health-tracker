@@ -21,10 +21,10 @@ function NavBar() {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/survey">Daily Survey</Link>
+          <Link to="/track/">Daily Survey</Link>
         </li>
         <li>
-          <Link to="/track">History</Link>
+          <Link to="/track/:userId">History</Link>
         </li>
         <li>
           <Link to="/">Home</Link>

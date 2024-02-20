@@ -7,15 +7,15 @@ router
   .post(controller.create)
   .get(controller.list)
   .all(methodNotAllowed);
-<<<<<<< HEAD
+
 router.route("/:user_id").all(methodNotAllowed);
-=======
+
 router
   .route("/:user_id")
   .get(controller.read3)
   .post(controller.create)
   .all(methodNotAllowed);
->>>>>>> main
+
 router.route("/:track_activity_id").get(controller.read).all(methodNotAllowed);
 router.route("/users/:user_id").get(controller.read2).all(methodNotAllowed);
 router.route("/:user_id/new").post(controller.create).all(methodNotAllowed);
