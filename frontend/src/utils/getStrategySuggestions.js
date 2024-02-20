@@ -12,18 +12,18 @@ export default function getStrategySuggestions(surveyInputs) {
     physical_activity: 0,
   };
 
-  const sleepQuality = surveyInputs.sleep_quality;
-  const sleepQuantity = surveyInputs.sleep_amount;
+  const sleepQuality = surveyInputs.track_sleep_quality;
+  const sleepQuantity = surveyInputs.track_sleep_duration;
   const sleepAverage = (Number(sleepQuality) + Number(sleepQuantity)) / 2;
 
   /*
     Calculates the percentage for each stressor based on maximum allowable input
     */
   strategyTypes.stress =
-    100 - calculatePercentage(Number(surveyInputs.work_stress), 10);
+    100 - calculatePercentage(Number(surveyInputs.track_stress_level), 10);
   strategyTypes.sleep = calculatePercentage(sleepAverage, 10);
   strategyTypes.physical_activity = calculatePercentage(
-    Number(surveyInputs.activity_time),
+    Number(surveyInputs.track_physical_activity),
     90
   );
 
