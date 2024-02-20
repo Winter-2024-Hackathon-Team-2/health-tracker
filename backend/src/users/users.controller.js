@@ -55,10 +55,28 @@ async function create(req, res) {
   console.log(data);
   res.status(201).json({ data });
 }
+
+async function login(req, res, next) {
+  const { user_id, user_password } = req.body;
+
+  try {
+    const user = await userService.login(user_id, user_password);
+
+    if (user) {
+      res.json({ data: user });
+    } else {
+      next({ status: 401, message: "Invalid username or password" });
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   list,
   read: [asyncErrorBoundary(userExists), asyncErrorBoundary(read)],
   update: [asyncErrorBoundary(userExists), asyncErrorBoundary(update)],
   delete: [asyncErrorBoundary(userExists), asyncErrorBoundary(destroy)],
   create: [hasData, asyncErrorBoundary(create)],
+  login: [hasData, asyncErrorBoundary(login)],
 };

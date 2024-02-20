@@ -1,7 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
+  const navigate = useNavigate();
+
+    const handleLogout = () => {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('is_admin');
+      
+      navigate("/");
+      window.location.reload();
+    };
+  
+
   return (
       <nav>
         <ul>
@@ -25,6 +36,7 @@ function NavBar() {
             <Link to="/strategies">Search</Link>
           </li>
         </ul>
+        <button onClick={handleLogout}>Logout</button>
       </nav>
     );
 }
