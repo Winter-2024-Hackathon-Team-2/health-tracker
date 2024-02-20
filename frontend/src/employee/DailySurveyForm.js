@@ -27,24 +27,40 @@ function DailySurveyForm(){
     }
     
     return (
-        <div className="w-100">
-            <h1>This is the correct page</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="activity_time">
-                        Activity Time
+        <div className="flex items-center justify-center min-h-full">
+            
+            <form onSubmit={handleSubmit} className="w-1/2 bg-gray-100 p-8 rounded-lg shadow-md">
+                <h1 className="text-2xl font-bold mb-4 text-center">Daily Survey</h1>
+                <div className="form-group mb-4">
+                    <label htmlFor="activity_time" className="block text-gray-700 font-bold mb-2">
+                        Sleep Quality
                     </label>
                     <input 
-                        type="number" 
-                        className="form-control" 
-                        id="activity_time" 
-                        name="activity_time"
+                        type="range" 
+                        className="form-control range"
+                        id="sleep_quality" 
+                        name="sleep_quality" 
+                        value={formData.sleep_quality} 
                         onChange={handleInput}
-                        value={formData.activity_time}
-                        placeholder="number of minutes being active yesterday" />
+                        min= '1'
+                        max= '10'
+                        step='1'
+                        required />
+                    <div className="w-full flex justify-between text-xs px-2">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="sleep_amount">
+                <div className="form-group mb-4">
+                    <label htmlFor="sleep_amount" className="block text-gray-700 font-bold mb-2">
                         Sleep Amount
                     </label>
                     <input 
@@ -56,35 +72,51 @@ function DailySurveyForm(){
                         value={formData.sleep_amount}
                         placeholder="Hours of sleep last night" />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="sleep_quality">
-                        Sleep Quality
+                <div className="form-group mb-4">
+                    <label htmlFor="activity_time" className="block text-gray-700 font-bold mb-2">
+                        Time spent active
                     </label>
                     <input 
                         type="number" 
                         className="form-control"
-                        id="sleep_quality"
-                        name="sleep_quality"
+                        id="activity_time"
+                        name="activity_time"
                         onChange={handleInput}
-                        value={formData.sleep_quality}
+                        value={formData.activity_time}
                         required />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="work_stress">
+                <div className="form-group mb-4">
+                    <label htmlFor="work_stress" className="block text-gray-700 font-bold mb-2">
                         Work Stress
                     </label>
                     <input 
-                        type="number" 
-                        className="form-control"
+                        type="range" 
+                        className="form-control range"
                         id="work_stress" 
                         name="work_stress" 
                         value={formData.work_stress} 
                         onChange={handleInput}
+                        min= '1'
+                        max= '10'
+                        step='1'
                         required />
+                        <div className="w-full flex justify-between text-xs px-2">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                    </div>
                 </div>
-                
-                <button type="submit" className="btn btn-primary mr-3">Submit</button>
-                <button type="button" className="btn btn-secondary mr-3" onClick={()=>navigate(-1)}>Cancel</button>
+                <div className="flex justify-center">
+                    <button type="submit" className="btn btn-primary mr-3">Submit</button>
+                    <button type="button" className="btn btn-secondary mr-3" onClick={()=>navigate(-1)}>Cancel</button>
+                </div>
             </form>
         </div>)
 }
