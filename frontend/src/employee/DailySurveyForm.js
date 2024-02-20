@@ -23,9 +23,10 @@ function DailySurveyForm(){
     function handleSubmit(event){
         event.preventDefault();
         console.log(formData);
-        getStrategySuggestions(formData);
+        let strategyType = getStrategySuggestions(formData);
+        console.log(strategyType)
         setFormData(initialFormData);
-
+        navigate(`/strategies/${strategyType}`)
     }
     
     return (

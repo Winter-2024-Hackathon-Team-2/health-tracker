@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+  const strategyType = localStorage.getItem("strategyType")
   return (
     <nav>
       <ul>
@@ -26,7 +27,7 @@ function NavBar() {
         </li>
           <li>
             {/*TODO: implement function that replaces :strategyType with {strategyType} from user survey*/}
-            <Link to="/strategies/:strategyType">Strategies</Link>
+            <Link to={`/strategies/${strategyType}`}>Strategies</Link>
           </li>
           <li>
             <Link to="/strategies">Search</Link>

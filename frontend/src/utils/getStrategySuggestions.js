@@ -37,7 +37,7 @@ export default function getStrategySuggestions(surveyInputs) {
       focusArea = key;
     }
   }
-
-  console.log(focusArea);
+  localStorage.setItem('strategyType', focusArea);
+  return focusArea;
 }
 
