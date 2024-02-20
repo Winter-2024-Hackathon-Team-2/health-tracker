@@ -27,18 +27,15 @@ function inputIsValid(req, res, next) {
         });
       }
     }
-  }
+  };
   return next();
 }
 
 function physicalActivityIsValid(req, res, next) {
   const { data = {} } = req.body;
   const physicalActivity = data.track_physical_activity;
-  if (physicalActivity > 90 || physicalActivity < 1) {
-    next({
-      status: 400,
-      message: `Invalid input. Input must be between 1 and 90.`,
-    });
+  if (physicalActivity > 90 || physicalActivity < 1){
+    next({status:400, message:`Invalid input. Input must be between 1 and 90.`})
   }
   return next();
 }
@@ -53,7 +50,7 @@ async function historyExists2(req, res, next) {
 }
 
 function hasData(req, res, next) {
-  const { data = {} } = req.body;
+  const {data = {} } = req.body;
   if (!data) {
     return next({
       status: 400,
@@ -75,21 +72,10 @@ function read(req, res) {
   res.json({ data });
 }
 
-async function read2(req, res) {
-  let newHistory = {
-    user_id: req.params.user_id,
-  };
-  console.log(newHistory);
-  let data2 = await historyService.read3(newHistory.user_id);
-  res.json({ data2 });
-}
-
 async function create(req, res) {
   let newHistory = {
-    ...req.body.data,
-    user_id: req.params.user_id,
-    track_date: today,
-  };
+    ...req.body.data, user_id: req.params.user_id, track_date: today
+  }
   let data = await historyService.create(newHistory);
   res.status(201).json({ data });
 }
@@ -107,7 +93,6 @@ module.exports = {
   list,
   read: [asyncErrorBoundary(historyExists), read],
   read2: [asyncErrorBoundary(historyExists2), read],
-  read3: [asyncErrorBoundary(historyExists2), read2],
   create: [
     hasData,
     hasRequiredProperties,

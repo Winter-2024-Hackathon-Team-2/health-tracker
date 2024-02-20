@@ -8,6 +8,7 @@ export default function NewUser() {
   const initialFormState = {
     user_age: 0,
     user_gender: "",
+
     occupation: "",
   };
 

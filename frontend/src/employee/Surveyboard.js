@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { listHistory } from "../utils/api";
 import Surveys from "./Surveys";
 import ErrorAlert from "../layout/ErrorAlert";
@@ -24,14 +23,7 @@ function Surveyboard() {
     listHistory(abortController.signal).then(setSurveys).catch(setError);
     return () => abortController.abort();
   }
-  let { userId } = useParams();
-  let items = [];
-  if (userId) {
-    items = surveys.filter((r) => (r.user_id = userId));
-  }
-  if (!userId) {
-    items = surveys;
-  }
+  console.log(surveys, "---");
   return (
     <main>
       <div
@@ -54,7 +46,7 @@ function Surveyboard() {
       </div>
 
       <ErrorAlert error={error} />
-      <Surveys surveys={items} />
+      <Surveys surveys={surveys} />
     </main>
   );
 }
