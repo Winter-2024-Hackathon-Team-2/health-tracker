@@ -21,7 +21,7 @@ function NavBar() {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/track/">Daily Survey</Link>
+          <Link to="/track/:userId/new">Daily Survey</Link>
         </li>
         <li>
           <Link to="/track/:userId">History</Link>

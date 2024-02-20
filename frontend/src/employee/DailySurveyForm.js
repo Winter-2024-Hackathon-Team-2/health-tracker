@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import getStrategySuggestions from "../utils/getStrategySuggestions";
 import { createSurvey } from "../utils/api";
 
@@ -13,7 +13,9 @@ function DailySurveyForm() {
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
-  const userId = localStorage.getItem("user_id");
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const { userId } = useParams();
   let strategyType;
   function handleInput(event) {
     setFormData({
@@ -22,15 +24,16 @@ function DailySurveyForm() {
     });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     strategyType = getStrategySuggestions(formData);
     try {
-      createSurvey(formData, userId);
-    } catch {
-      console.error();
+      await createSurvey(formData, userId);
+      setFormData(initialFormData);
+      navigate(`/strategies/${strategyType}`);
+    } catch (error) {
+      setErrorMessage(error);
     }
-    setFormData(initialFormData);
   }
 
   return (
@@ -150,6 +153,7 @@ function DailySurveyForm() {
             Cancel
           </button>
         </div>
+        {errorMessage && <p className="text-red-500 text-center py-2">{errorMessage.message}</p>}
       </form>
     </div>
   );
