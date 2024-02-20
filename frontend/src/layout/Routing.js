@@ -28,7 +28,7 @@ function Routing() {
         <>
           <Route path="/admin/add" element={<AddEmployee />} />
           <Route path="/admin" element={<EmployeeOverview />} />
-          <Route path="/survey" element={<DailySurveyForm />} />
+          <Route path="/track/:userId/new" element={<DailySurveyForm />} />
           <Route path="/*" element={<HomePage />} />
           <Route path="/strategies" element={<StrategiesSearch />} />
           {/* Currently not functional, placeholder text tells user to fill out survey or search for strategies. */}
