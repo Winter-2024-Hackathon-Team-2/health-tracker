@@ -20,8 +20,9 @@ export default function StrategiesSearch() {
     const abortController = new AbortController();
     listStrategies(abortController.signal)
       .then(setStrategies)
+      .then((data)=>console.log("strategies being returned: ", strategies))
       .catch(setStrategiesError);
-    return abortController.abort();
+    return ()=> abortController.abort();
   }
 
 
@@ -35,11 +36,11 @@ export default function StrategiesSearch() {
 //filters data, useEffect used to rerender on change of strategies or strategyFilter
   useEffect(() => {
     setFilteredData(strategies.filter((strategy) => {
-      let strategy_type = strategy.strategy_type.toLowerCase();
+      let strategy_type = strategy.strategy_coping_type.toLowerCase();
       let description = strategy.strategy_description.toLowerCase();
       return (strategy_type.includes(strategyFilter.toLowerCase()) || description.includes(strategyFilter.toLowerCase()))
     }));
-  }, [strategies, strategyFilter])
+  }, [strategyFilter])
 
 
   return (
