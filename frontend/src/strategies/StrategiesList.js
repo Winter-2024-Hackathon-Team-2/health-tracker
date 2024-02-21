@@ -7,14 +7,16 @@ export default function StrategiesList({ strategies }) {
 
   const strategiesDisplay = strategies.map((strategy) => {
     return (
-      <li key={strategy.strategy_id}>
-        <h3>{strategy.strategy_description}</h3>
+      <li key={strategy.strategy_id} className="flex flex-col items-center justify-center my-4">
+        <h3 className="text-xl py-2 text-center">{strategy.strategy_description}</h3>
+        <a href={strategy.strategy_article} className="">Learn More</a>
         {strategy.strategy_photo && (
           <img
             src={strategy.strategy_photo}
             alt={strategy.description}
             width="400"
             height="235"
+            className="py-2"
           />
         )}
         {strategy.strategy_video && (
@@ -27,7 +29,6 @@ export default function StrategiesList({ strategies }) {
             allowFullScreen
           ></iframe>
         )}
-        <a href={strategy.strategy_article}>Article</a>
       </li>
     );
   });
@@ -35,8 +36,8 @@ export default function StrategiesList({ strategies }) {
 
   return (
     <>
-      <section>
-        <ul>{strategiesDisplay}</ul>
+      <section className="flex flex-col items-center justify-center">
+        <ul className="grid grid-cols-3  gap-x-3 items-end justify-center">{strategiesDisplay}</ul>
       </section>
     </>
   );

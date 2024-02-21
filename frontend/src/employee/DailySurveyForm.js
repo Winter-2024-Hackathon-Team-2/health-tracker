@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { createSurvey } from "../utils/api";
-import { useNavigate } from "react-router";
+import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DailySurveyForm() {
   const initialFormData = {
@@ -10,8 +10,8 @@ function DailySurveyForm() {
     track_stress_level: 0,
   };
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ ...initialFormData });
-  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState(initialFormData);
+
   function handleInput(event) {
     setFormData({
       ...formData,
@@ -19,18 +19,17 @@ function DailySurveyForm() {
     });
   }
 
-  const handleSubmit = async (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const controller = new AbortController();
+    strategyType = getStrategySuggestions(formData);
     try {
-      await createSurvey(formData, controller.signal);
-
-      setFormData({ ...initialFormData });
+      await createSurvey(formData, userId);
+      setFormData(initialFormData);
+      navigate(`/strategies/${strategyType}`);
     } catch (error) {
-      setError(error);
+      setErrorMessage(error);
     }
-    return () => controller.abort();
-  };
+  }
 
   return (
     <div className="flex items-center justify-center min-h-full">
@@ -138,21 +137,22 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button
-            type="submit"
-            className="btn btn-primary mr-3"
-            onClick={navigate.goBack}
-          >
+          <button type="submit" className="btn btn-primary mr-3">
             Submit
           </button>
           <button
             type="button"
             className="btn btn-secondary mr-3"
-            onClick={() => navigate("/strategies")}
+            onClick={() => navigate(`/strategies/${strategyType}`)}
           >
             Cancel
           </button>
         </div>
+        {errorMessage && (
+          <p className="text-red-500 text-center py-2">
+            {errorMessage.message}
+          </p>
+        )}
       </form>
     </div>
   );

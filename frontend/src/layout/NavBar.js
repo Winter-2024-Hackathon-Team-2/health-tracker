@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 function NavBar() {
+  const strategyType = localStorage.getItem("strategyType")
+
   const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -12,7 +14,6 @@ function NavBar() {
       window.location.reload();
     };
   
-
   return (
     <nav>
       <ul>
@@ -20,10 +21,10 @@ function NavBar() {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/survey">Daily Survey</Link>
+          <Link to="/track/:userId/new">Daily Survey</Link>
         </li>
         <li>
-          <Link to="/track">History</Link>
+          <Link to="/track/:userId">History</Link>
         </li>
         <li>
           <Link to="/">Home</Link>
@@ -37,7 +38,7 @@ function NavBar() {
         </li>
           <li>
             {/*TODO: implement function that replaces :strategyType with {strategyType} from user survey*/}
-            <Link to="/strategies/:strategyType">Strategies</Link>
+            <Link to={`/strategies/${strategyType}`}>Strategies</Link>
           </li>
           <li>
             <Link to="/strategies">Search</Link>

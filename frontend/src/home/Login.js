@@ -39,7 +39,8 @@ function LoginPage() {
         localStorage.setItem('is_admin', 'true');
         navigate('/admin')
       } else {
-        navigate('/survey')
+        navigate(`/track/${username}/new`)
+        window.location.reload();
       }
     } catch (error) {
       console.error('Login failed:', error);
@@ -48,7 +49,6 @@ function LoginPage() {
 
     setUsername('');
     setPassword('');
-    window.location.reload();
   };
 
   return (

@@ -86,8 +86,8 @@ export async function listHistory(signal) {
   const url = new URL(`${API_BASE_URL}/track`);
   return await fetchJson(url, { headers, signal }, []);
 }
-export async function createSurvey(data, signal) {
-  const url = `${API_BASE_URL}/track/new`;
+export async function createSurvey(data, userId, signal) {
+  const url = `${API_BASE_URL}/track/${userId}/new`;
   const options = {
     method: "POST",
     headers,
@@ -110,7 +110,7 @@ export async function updateSurvey(data) {
   return await fetchJson(url, options, {});
 }
 export async function readUserHistory(userId, signal) {
-  const url = new URL(`${API_BASE_URL}/track/users/${userId}`);
+  const url = new URL(`${API_BASE_URL}/track/${userId}`);
   return await fetchJson(url, { headers, signal }, []);
 }
 
