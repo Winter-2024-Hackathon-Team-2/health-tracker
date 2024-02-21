@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import getStrategySuggestions from "../utils/getStrategySuggestions";
+import { createSurvey } from "../utils/api";
 
 function DailySurveyForm() {
   const initialFormData = {
@@ -11,7 +13,10 @@ function DailySurveyForm() {
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
+  const [errorMessage, setErrorMessage] = useState(null);
 
+  const { userId } = useParams();
+  let strategyType;
   function handleInput(event) {
     setFormData({
       ...formData,
