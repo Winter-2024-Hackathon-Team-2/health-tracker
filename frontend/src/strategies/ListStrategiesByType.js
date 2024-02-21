@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { listStrategiesByType } from "../utils/api";
 import StrategiesList from "./StrategiesList";
+import StrategiesCarousel from "./StrategiesCarousel";
 
 //Lists personalized strategies based on user's survey input
 
@@ -28,10 +29,10 @@ export default function ListStrategiesByType() {
   if (strategies.length) {
     return (
       <>
-      <section className="flex flex-col item-center">
+      <section className="flex flex-col item-center text-center">
       <h3 className="text-3xl">Welcome Back</h3>
       <p>Based on your survey, we've provided suggestions for {strategyType}.</p>
-        <StrategiesList strategies={strategies} />
+        <StrategiesCarousel strategies={strategies} />
         </section>
       </>
     );
