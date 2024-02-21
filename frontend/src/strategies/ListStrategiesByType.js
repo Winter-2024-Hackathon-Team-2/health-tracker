@@ -25,7 +25,6 @@ export default function ListStrategiesByType() {
     link to search for a strategy
   */
 
-    console.log(strategyType)
   if (strategies.length) {
     return (
       <>
@@ -45,7 +44,7 @@ export default function ListStrategiesByType() {
           suggestions, please complete the daily survey, otherwise, search for a
           strategy.
         </h3>
-        <Link to="/strategies">Search for Coping Strategies</Link>
+        <Link to="/strategies">Browse for Coping Strategies</Link>
         </section>
       </>
     );

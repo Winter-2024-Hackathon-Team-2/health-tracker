@@ -8,8 +8,6 @@ router
   .get(controller.list)
   .all(methodNotAllowed);
 
-router.route("/:user_id").all(methodNotAllowed);
-
 router
   .route("/:user_id")
   .get(controller.read3)

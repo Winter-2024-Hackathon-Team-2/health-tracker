@@ -21,12 +21,13 @@ async function search(req, res, next) {
     return next({status: 404, message: "No coping strategies found that match your search."})
 }
 
-async function list(req, res, next) {
+async function list(req, res) {
   const data = await service.list();
   res.json({ data });
 }
 
 module.exports = {
   listByStrategyType: [asyncErrorBoundary(listByStrategyType)],
-  search: [asyncErrorBoundary(search), asyncErrorBoundary(list)]
+  search: [asyncErrorBoundary(search), asyncErrorBoundary(list)],
+  list
 };

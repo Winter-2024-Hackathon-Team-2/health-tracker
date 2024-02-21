@@ -114,36 +114,32 @@ export async function readUserHistory(userId, signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
-  export async function readHistoryActivityId(activityId, signal) {
-    const url = new URL(`${API_BASE_URL}/history/${activityId}`);
-    return await fetchJson(url, { headers, signal }, [])
-  }
+export async function readHistoryActivityId(activityId, signal) {
+  const url = new URL(`${API_BASE_URL}/history/${activityId}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
 
-  export async function deleteSurvey(activityId) {
-    const url = `${API_BASE_URL}/track/${activityId}`;
-    return await fetchJson(url, { method: "DELETE", headers }, {});
-  }
+export async function deleteSurvey(activityId) {
+  const url = `${API_BASE_URL}/track/${activityId}`;
+  return await fetchJson(url, { method: "DELETE", headers }, {});
+}
 
-  export async function listStrategies(params, signal) {
-    const url = new URL(`${API_BASE_URL}/strategies`);
-    Object.entries(params).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
-  );
-  console.log(url)
-    return await fetchJson(url, { headers, signal }, [])
-  }
+export async function listStrategies(signal) {
+  const url = new URL(`${API_BASE_URL}/strategies`);
+  return await fetchJson(url, { headers, signal }, []);
+}
 
-  export async function listStrategiesByType(strategyId, signal) {
-    const url = new URL(`${API_BASE_URL}/strategies/${strategyId}`);
-    return await fetchJson(url, { headers, signal }, [])
-  }
+export async function listStrategiesByType(strategyId, signal) {
+  const url = new URL(`${API_BASE_URL}/strategies/${strategyId}`);
+  return await fetchJson(url, { headers, signal }, []);
+}
 
-  export async function login(username, password) {
-    const url = `${API_BASE_URL}/users/login`;
-    const options = {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ user_id: username, user_password: password }),
-    };
-    return await fetchJson(url, options, {});
-  }
+export async function login(username, password) {
+  const url = `${API_BASE_URL}/users/login`;
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ user_id: username, user_password: password }),
+  };
+  return await fetchJson(url, options, {});
+}
