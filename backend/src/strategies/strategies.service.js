@@ -16,6 +16,7 @@ function search(strategy) {
 function list(){
   return knex("strategies")
   .select("*")
+  .orderBy('strategy_coping_type')
 }
 
 module.exports = {

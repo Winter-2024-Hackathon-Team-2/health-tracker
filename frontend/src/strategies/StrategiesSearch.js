@@ -1,66 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { listStrategies } from "../utils/api";
-import { useLocation } from "react-router-dom";
 import StrategiesList from "./StrategiesList";
 
 //user can search for coping strategies
 
 export default function StrategiesSearch() {
   const [strategies, setStrategies] = useState([]);
-  const [strategyType, setStrategyType] = useState("");
-
-  //updates url to include search params
-  
-  const location = useLocation();
-  const queryParams = new URLSearchParams({ strategy: strategyType });
-  location.search = queryParams.toString();
-
-  //TODO update so that Not Found text renders only after user searches
-  function displayStrategies(strategies) {
-    if (strategies.length) {
-      return (
-        <div>
-          <StrategiesList strategies={strategies} />
-        </div>
-      );
-    } else {
-      return <p>No strategies were found, try searching for another term.</p>;
-    }
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const abortController = new AbortController();
-    listStrategies({ strategy: strategyType }, abortController.signal)
-      .then(setStrategies)
-      .catch((error) => console.log(error.message));
-    return () => abortController.abort();
-  }
-
+  const [strategiesError, setStrategiesError] = useState(null);
+  const [filteredData, setFilteredData] = useState(strategies)
+  const [strategyFilter, setStrategyFilter] = useState("");
 
   function handleChange({ target }) {
-    setStrategyType(target.value);
+    setStrategyFilter(target.value);
   }
+
+  useEffect(loadStrategies, []);
+
+  function loadStrategies() {
+    const abortController = new AbortController();
+    listStrategies(abortController.signal)
+      .then(setStrategies)
+      .then((data)=>console.log("strategies being returned: ", strategies))
+      .catch(setStrategiesError);
+    return ()=> abortController.abort();
+  }
+
+
+  //resets to display all strategies, clears search field
+  function reset(e){
+    e.preventDefault();
+    setFilteredData(strategies)
+    setStrategyFilter("")
+  }
+
+//filters data, useEffect used to rerender on change of strategies or strategyFilter
+  useEffect(() => {
+    setFilteredData(strategies.filter((strategy) => {
+      let strategy_type = strategy.strategy_coping_type.toLowerCase();
+      let description = strategy.strategy_description.toLowerCase();
+      return (strategy_type.includes(strategyFilter.toLowerCase()) || description.includes(strategyFilter.toLowerCase()))
+    }));
+  }, [strategyFilter])
 
 
   return (
     <>
       <section>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="strategyType">
+        <form>
+          <label htmlFor="strategyFilter">
             <input
-              id="strategyType"
+              id="strategyFilter"
               name="strategyType"
-              type="search"
-              placeholder="Search for coping strategies"
-              value={strategyType}
+              type="text"
+              placeholder="Filter"
+              value={strategyFilter}
               onChange={handleChange}
               required
             ></input>
-            <button type="submit">Search</button>
+            <button onClick={reset}>Reset</button>
           </label>
         </form>
-        <div>{displayStrategies(strategies)}</div>
+      {strategiesError && <p>{strategiesError.message}</p>}
+       {strategyFilter ? <StrategiesList strategies={filteredData} /> : <StrategiesList strategies={strategies} />}
       </section>
     </>
   );
