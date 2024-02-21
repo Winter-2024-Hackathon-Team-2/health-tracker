@@ -29,6 +29,7 @@ function DailySurveyForm() {
     strategyType = getStrategySuggestions(formData);
     try {
       await createSurvey(formData, userId);
+      localStorage.setItem('surveyComplete', 'true');
       setFormData(initialFormData);
       navigate(`/strategies/${strategyType}`);
     } catch (error) {
@@ -84,7 +85,7 @@ function DailySurveyForm() {
           </label>
           <input
             type="number"
-            className="form-control"
+            className="form-control bg-white text-black"
             id="track_sleep_duration"
             name="track_sleep_duration"
             onChange={handleInput}
@@ -101,7 +102,7 @@ function DailySurveyForm() {
           </label>
           <input
             type="number"
-            className="form-control"
+            className="form-control bg-white text-black"
             id="track_physical_activity"
             name="track_physical_activity"
             onChange={handleInput}
@@ -142,12 +143,12 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="btn btn-primary mr-3">
+          <button type="submit" className="btn bg-purple-500 text-white mr-3">
             Submit
           </button>
           <button
             type="button"
-            className="btn btn-secondary mr-3"
+            className="btn bg-dark-purple text-white mr-3"
             onClick={() => navigate(`/strategies/${strategyType}`)}
           >
             Cancel
