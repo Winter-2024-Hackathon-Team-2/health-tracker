@@ -27,7 +27,8 @@ function Surveyboard() {
   let { userId } = useParams();
   let items = [];
   if (userId) {
-    items = surveys.filter((r) => (r.user_id = userId));
+    // eslint-disable-next-line eqeqeq
+    items = surveys.filter((r) => r.user_id == userId);
   }
   if (!userId) {
     items = surveys;

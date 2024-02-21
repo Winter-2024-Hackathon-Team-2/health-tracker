@@ -75,15 +75,6 @@ function read(req, res) {
   res.json({ data });
 }
 
-async function read2(req, res) {
-  let newHistory = {
-    user_id: req.params.user_id,
-  };
-  console.log(newHistory);
-  let data2 = await historyService.read3(newHistory.user_id);
-  res.json({ data2 });
-}
-
 async function create(req, res) {
   let newHistory = {
     ...req.body.data,
@@ -100,14 +91,24 @@ const properties = [
   "track_sleep_quality",
   "track_stress_level",
 ];
+async function update(req, res) {
+  const updatedUser = {
+    ...res.locals.track,
+    ...req.body.data,
+    track_activity_id: res.locals.history.track_activity_id,
+  };
+  const data = await historyService.update(updatedUser);
 
+  console.log(data);
+  res.json({ data });
+}
 const hasRequiredProperties = hasProperties(properties);
 
 module.exports = {
   list,
   read: [asyncErrorBoundary(historyExists), read],
   read2: [asyncErrorBoundary(historyExists2), read],
-  read3: [asyncErrorBoundary(historyExists2), read2],
+  update: [asyncErrorBoundary(update)],
   create: [
     hasData,
     hasRequiredProperties,

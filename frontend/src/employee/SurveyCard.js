@@ -17,8 +17,8 @@ const SurveyCard = ({ survey, handleCancel }) => {
           <div className="flex justify-center mt-2 font-bold text-teal-700">
             <a
               className="focus:outline-none hover:no-underline bg-gray-100 hover:bg-teal-600 hover:text-black py-1 px-3 rounded-full mr-3"
-              onClick={() => <EditSurvey />}
-              href={`/users/${survey.survey_id}/edit`}
+              onClick={<EditSurvey survey={survey} />}
+              href={`/track/${survey.track_activity_id}/edit`}
             >
               Edit
             </a>

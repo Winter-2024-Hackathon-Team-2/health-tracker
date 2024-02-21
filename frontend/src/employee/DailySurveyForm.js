@@ -29,7 +29,7 @@ function DailySurveyForm() {
     strategyType = getStrategySuggestions(formData);
     try {
       await createSurvey(formData, userId);
-      localStorage.setItem('surveyComplete', 'true');
+      localStorage.setItem("surveyComplete", "true");
       setFormData(initialFormData);
       navigate(`/strategies/${strategyType}`);
     } catch (error) {
@@ -154,7 +154,11 @@ function DailySurveyForm() {
             Cancel
           </button>
         </div>
-        {errorMessage && <p className="text-red-500 text-center py-2">{errorMessage.message}</p>}
+        {errorMessage && (
+          <p className="text-red-500 text-center py-2">
+            {errorMessage.message}
+          </p>
+        )}
       </form>
     </div>
   );

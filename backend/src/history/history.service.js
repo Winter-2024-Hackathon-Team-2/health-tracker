@@ -16,11 +16,11 @@ function read2(user_id) {
     .select("t.*")
     .where({ "t.user_id": user_id });
 }
-function read3(userId) {
-  return knex("track as t")
-    .join("users as u", "t.user_id", "u.user_id")
-    .select("t.*")
-    .where({ "t.user_id": userId });
+function update(updatedUser) {
+  return knex("track")
+    .where({ track_activity_id_id: updatedUser.track_activity_id })
+    .update(updatedUser, "*")
+    .then((res) => res[0]);
 }
 function create(track) {
   return knex("track")
@@ -31,6 +31,6 @@ module.exports = {
   list,
   read,
   read2,
-  read3,
+  update,
   create,
 };

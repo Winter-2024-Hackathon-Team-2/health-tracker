@@ -75,7 +75,7 @@ async function login(req, res, next) {
 module.exports = {
   list,
   read: [asyncErrorBoundary(userExists), asyncErrorBoundary(read)],
-  update: [asyncErrorBoundary(userExists), asyncErrorBoundary(update)],
+  update: [asyncErrorBoundary(update)],
   delete: [asyncErrorBoundary(userExists), asyncErrorBoundary(destroy)],
   create: [hasData, asyncErrorBoundary(create)],
   login: [hasData, asyncErrorBoundary(login)],
