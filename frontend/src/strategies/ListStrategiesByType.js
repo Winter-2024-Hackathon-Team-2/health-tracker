@@ -30,7 +30,7 @@ export default function ListStrategiesByType() {
     return (
       <>
       <section className="flex flex-col item-center text-center">
-      <h3 className="text-3xl">Welcome Back</h3>
+      <h3 className="text-3xl">Moodscape Recommends</h3>
       <p>Based on your survey, we've provided suggestions for {strategyType}.</p>
         <StrategiesCarousel strategies={strategies} />
         </section>

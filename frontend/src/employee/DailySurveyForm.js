@@ -16,6 +16,7 @@ function DailySurveyForm() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const { userId } = useParams();
+  
   let strategyType;
   function handleInput(event) {
     setFormData({
@@ -38,7 +39,7 @@ function DailySurveyForm() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-full">
+    <div className="flex items-center justify-center min-h-full md:pt-20">
       <form
         onSubmit={handleSubmit}
         className="w-1/2 bg-gray-100 p-8 rounded-lg shadow-md"
@@ -143,12 +144,12 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="btn bg-purple-500 text-white mr-3">
+          <button type="submit" className="btn bg-turqoise hover:bg-sky-400 text-white px-9 mr-3">
             Submit
           </button>
           <button
             type="button"
-            className="btn bg-dark-purple text-white mr-3"
+            className="btn border-black bg-gray-400 mr-3 px-9"
             onClick={() => navigate(`/strategies/${strategyType}`)}
           >
             Cancel
@@ -157,6 +158,7 @@ function DailySurveyForm() {
         {errorMessage && <p className="text-red-500 text-center py-2">{errorMessage.message}</p>}
       </form>
     </div>
+  
   );
 }
 

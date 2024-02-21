@@ -4,6 +4,7 @@ const hasProperties = require("../errors/hasProperties");
 const today = new Date().toJSON().slice(0, 10);
 
 function historyExists(req, res, next) {
+  console.log("history fires");
   historyService
     .read(req.params.track_activity_id)
     .then((history) => {
@@ -45,6 +46,7 @@ function physicalActivityIsValid(req, res, next) {
 
 async function historyExists2(req, res, next) {
   const history = await historyService.read2(req.params.user_id);
+  console.log("history2 fires");
   if (history) {
     res.locals.history = history;
     return next();
@@ -64,6 +66,7 @@ function hasData(req, res, next) {
 }
 
 function list(req, res, next) {
+  console.log("list is firing")
   historyService
     .list()
     .then((data) => res.json({ data }))
@@ -71,6 +74,7 @@ function list(req, res, next) {
 }
 
 function read(req, res) {
+  console.log("wrong read is firing")
   const { history: data } = res.locals;
   res.json({ data });
 }
@@ -79,9 +83,10 @@ async function read2(req, res) {
   let newHistory = {
     user_id: req.params.user_id,
   };
-  console.log(newHistory);
-  let data2 = await historyService.read3(newHistory.user_id);
-  res.json({ data2 });
+  console.log("this is working", newHistory.user_id);
+  let data = await historyService.read3(newHistory.user_id);
+  console.log("data2 field: ", data)
+  res.json({ data });
 }
 
 async function create(req, res) {
