@@ -7,7 +7,7 @@ export default function Surveys({ surveys }) {
 
 
   return (
-    <div className=" grid grid-cols-3 sm:justify-center text-center flex-wrap">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center sm:justify-center text-center flex-wrap">
       {error ? <ErrorAlert error={error} /> : <></>}
       {surveys &&
         surveys.map((survey) => (
