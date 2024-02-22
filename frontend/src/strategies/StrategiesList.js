@@ -3,20 +3,17 @@ import React from "react";
 //simple list component that handles how the strategies are rendered
 
 export default function StrategiesList({ strategies }) {
-
-
   const strategiesDisplay = strategies.map((strategy) => {
     return (
-      <li key={strategy.strategy_id} className="flex flex-col items-center justify-center my-4">
-        <h3 className="text-xl py-2 text-center">{strategy.strategy_description}</h3>
-        <a href={strategy.strategy_article} className="">Learn More</a>
-        {strategy.strategy_photo && (
+      <li key={strategy.strategy_id} className="justify-center item-center content-center">
+        <div className="card card-compact w-96 bg-base-100 bg-dark-purple shadow-xl">
+          <figure>
+          {strategy.strategy_photo && (
           <img
             src={strategy.strategy_photo}
             alt={strategy.description}
             width="400"
             height="235"
-            className="py-2"
           />
         )}
         {strategy.strategy_video && (
@@ -29,15 +26,23 @@ export default function StrategiesList({ strategies }) {
             allowFullScreen
           ></iframe>
         )}
+          </figure>
+          <div className="card-body">
+            <a href={strategy.strategy_article} className="hover:text-pale-yellow text-center text-off-white"><h3>{strategy.strategy_description}</h3></a>
+            <div className="card-actions justify-end">
+            </div>
+          </div>
+        </div>
       </li>
     );
   });
 
-
   return (
     <>
-      <section className="flex flex-col items-center justify-center">
-        <ul className="grid grid-cols-3  gap-x-3 items-end justify-center">{strategiesDisplay}</ul>
+      <section className="">
+        <ul className="grid grid-cols-2  gap-x-1 gap-y-8 justify-items-center items-stretch content-center my-2">
+          {strategiesDisplay}
+        </ul>
       </section>
     </>
   );
