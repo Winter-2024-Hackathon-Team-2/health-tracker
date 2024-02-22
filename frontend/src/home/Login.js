@@ -39,6 +39,7 @@ function LoginPage() {
       if (userData.is_admin) {
         localStorage.setItem('is_admin', 'true');
         navigate('/admin')
+        window.location.reload();
       }
       else {
         navigate(`/track/${username}/new`)

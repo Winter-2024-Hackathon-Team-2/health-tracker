@@ -10,6 +10,7 @@ function DailySurveyForm() {
     track_sleep_duration: 0,
     track_sleep_quality: 0,
     track_stress_level: 0,
+    track_focus_area: null,
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
@@ -28,6 +29,14 @@ function DailySurveyForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     strategyType = getStrategySuggestions(formData);
+    console.log("strategyType is: ", strategyType)
+    
+    setFormData({
+      ...formData,
+      track_focus_area: strategyType
+    })
+
+    console.log("formData after we attempt to set strategy: ", formData)
     try {
       await createSurvey(formData, userId);
       localStorage.setItem('surveyComplete', 'true');

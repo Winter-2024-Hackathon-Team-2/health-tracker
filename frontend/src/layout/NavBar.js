@@ -16,8 +16,9 @@ function NavBar() {
       navigate("/");
       window.location.reload();
     };
-  
+  const isAdmin = localStorage.getItem('is_admin')
   return (
+    isAdmin == 'true' ? <button className="btn bg-dark-purple text-white hover:bg-violet-800 px-9 absolute top-4 right-10" onClick={handleLogout}>Logout</button> : 
   <div className="navbar bg-off-white flex flex-row">
     <div className="navbar-start ">
       <div className="dropdown">
@@ -45,7 +46,7 @@ function NavBar() {
   </div>
   </div>
     
-    );
+ );
 }
 
 export default NavBar;

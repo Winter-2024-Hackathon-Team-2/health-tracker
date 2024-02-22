@@ -43,7 +43,7 @@ function Surveyboard() {
             id="header-text"
             className="text-4xl sm:text-4xl m-1 font-bold text-black"
           >
-            Current Surveys:
+            {`user ${userId}'s Survey History`}
           </h1>
         </label>
 
