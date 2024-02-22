@@ -8,7 +8,6 @@ export default function SurveyForm({
   formData,
   history,
 }) {
-  console.log(formData);
   const navigate = useNavigate();
   return (
     <div className="w-100">

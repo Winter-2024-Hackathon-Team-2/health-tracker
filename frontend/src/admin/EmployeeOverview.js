@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { listUsers } from "../utils/api";
 
 const API_BASE_URL = "http://localhost:5001";
 
@@ -9,14 +10,19 @@ function EmployeeOverview() {
     key: null,
     direction: "ascending",
   });
+  const [error, setError] = useState(null)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`${API_BASE_URL}/users`)
-      .then((response) => response.json())
-      .then((data) => setEmployees(data.data))
-      .catch((error) => console.error("Error fetching employees:", error));
-  }, []);
+  useEffect(loadEmployees, []);
+
+  function loadEmployees() {
+    const abortController = new AbortController();
+    setError(null);
+    listUsers(abortController.signal)
+    .then(setEmployees)
+    .catch(setError);
+    return () => abortController.abort();
+  }
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -74,7 +80,6 @@ function EmployeeOverview() {
         >
           Add
         </button>
-
       <table className="table">
         <thead>
           <tr className="border border-gray-300 p-4 mb-6" style={{ fontSize: "1.5em" }}>

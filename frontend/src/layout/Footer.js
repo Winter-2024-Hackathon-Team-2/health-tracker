@@ -3,7 +3,7 @@ import moodscapev2 from '../images/moodscapev2.png'
 
 function Footer(){
     return(
-<footer className="footer items-center p-4 bg-neutral-100 text-neutral-content justify-center space-x-52">
+<footer className="footer items-center p-4 bg-neutral-100 text-neutral-content justify-center space-x-52 bottom-0">
   <aside className="items-center grid-flow-col">
     <img src={moodscapev2} alt="moodscape logo"className="w-24 ml-12" />
   </aside> 

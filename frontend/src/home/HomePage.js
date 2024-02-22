@@ -6,7 +6,6 @@ import DailySurveyForm from '../employee/DailySurveyForm'
 function HomePage() {
   return (
     <div>
-      <h1>HomePage</h1>
       {
         localStorage.isAdmin ? (
           <EmployeeOverview />

@@ -5,7 +5,7 @@ function StrategiesCarousel({strategies}) {
   const strategiesTest = strategies.map((strategy, index)=>{
   return (
     
-        <div id={`item${index}`} className="carousel-item w-full flex flex-col items-center">
+        <div id={`item${index}`} className="carousel-item w-full max-h-80 object-contain flex flex-col items-center">
             <h3 className="text-xl py-2 text-center">{strategy.strategy_description}</h3>
             <a href={strategy.strategy_article} className="">Learn More</a>
             {strategy.strategy_photo && (
@@ -33,7 +33,7 @@ function StrategiesCarousel({strategies}) {
 
 
 const carouselNumbers = strategies.map((strategy, index)=>{   
-        return <a href={`#item${index}`} className="btn btn-xs">{`${index + 1}`}</a>    
+        return <a href={`#item${index}`} className="btn btn-xs bg-turqoise text-white">{`${index + 1}`}</a>    
 })
 
 return(
