@@ -38,9 +38,9 @@ function AddEmployee() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="flex items-center justify-center p-4 bg-teal-500">
+      <div className="flex items-center justify-center p-4 bg-sky-100">
         <label htmlFor="employee_overview">
-          <h1 className="text-4xl sm:text-4xl m-1 font-bold text-black">
+          <h1 className="text-4xl sm:text-4xl m-1 font-bold text-dark-purple">
             Add an Employee
           </h1>
         </label>
