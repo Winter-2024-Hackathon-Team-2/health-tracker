@@ -92,7 +92,7 @@ function NavBar() {
           </div>
           <div className="navbar-end">
             <button
-              className="btn bg-dark-purple text-white hover:bg-violet-800 px-9"
+              className="btn bg-dark-purple text-white hover:bg-violet-800 px-9 mx-auto"
               onClick={handleLogout}
             >
               Logout
