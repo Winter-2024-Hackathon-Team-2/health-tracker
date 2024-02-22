@@ -48,7 +48,7 @@ function AddEmployee() {
       <div className="flex flex-1 items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
           <div className="mb-4">
             <label
