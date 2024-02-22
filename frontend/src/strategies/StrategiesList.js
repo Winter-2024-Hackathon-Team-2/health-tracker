@@ -39,8 +39,8 @@ export default function StrategiesList({ strategies }) {
 
   return (
     <>
-      <section className="">
-        <ul className="grid grid-cols-2  gap-x-1 gap-y-8 justify-items-center items-stretch content-center my-2">
+      <section className="flex place-content-center">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 lg:gap-x-16 xl:gap-x-24 gap-y-8 xl:gap-y-20 max-w-screen-lg justify-items-center items-stretch content-center my-2">
           {strategiesDisplay}
         </ul>
       </section>
