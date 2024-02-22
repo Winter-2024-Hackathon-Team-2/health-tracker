@@ -72,10 +72,10 @@ function EmployeeOverview() {
   };
 
   return (
-    <main>
-      <div className="flex flex-col justify-center lg:flex-row items-center p-4 bg-teal-500">
+    <main className="max-w-screen-xl flex flex-col mx-auto">
+      <div className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-100">
         <label htmlFor="employee_overview">
-          <h1 className="text-4xl sm:text-4xl m-1 font-bold text-black">
+          <h1 className="text-4xl sm:text-4xl m-1 font-bold text-dark-purple">
             Employee Overview
           </h1>
         </label>

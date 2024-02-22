@@ -11,7 +11,7 @@ const SurveyCard = ({ survey }) => {
   return (
     <>
       {survey && (
-        <div className="collapse collapse-arrow bg-base-200">
+        <div className="collapse collapse-arrow bg-base-200 w-96">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium text-left">
             <p>Date: {`${readableDate}`}</p>
