@@ -12,7 +12,7 @@ router
   .route("/:user_id")
   .get(controller.read2)
   .post(controller.create)
-
+  .put(controller.update)
   .all(methodNotAllowed);
 
 // router.route("/:track_activity_id").get(controller.read).all(methodNotAllowed);

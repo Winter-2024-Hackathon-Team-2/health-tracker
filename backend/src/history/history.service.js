@@ -33,6 +33,13 @@ function create(track) {
     .insert(track, "*")
     .then((createdRecords) => createdRecords[0]);
 }
+function update(updatedHistory) {
+  return knex("track")
+    .select("*")
+    .where({ track_activity_id: updatedHistory.track_activity_id })
+    .update(updatedHistory, "*")
+    .then((res) => res[0]);
+}
 module.exports = {
   list,
   read,

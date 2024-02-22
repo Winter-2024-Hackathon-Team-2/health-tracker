@@ -106,23 +106,40 @@ const properties = [
   "track_stress_level",
 ];
 async function update(req, res) {
-  const updatedUser = {
-    ...res.locals.track,
+  const { user_id } = req.params;
+  const { track_activity_id } = res.locals.history;
+  const updatedHistory = {
     ...req.body.data,
-    track_activity_id: res.locals.history.track_activity_id,
+    track_activity_id: track_activity_id,
+    user_id: user_id,
   };
-  const data = await historyService.update(updatedUser);
-
-  console.log(data);
+  const data = await historyService.update(updatedHistory);
   res.json({ data });
 }
 const hasRequiredProperties = hasProperties(properties);
 
+async function historyExists3(req, res, next) {
+  const { user_id } = req.params;
+  const history = await historyService.read2(user_id);
+
+  if (history) {
+    res.locals.history = history;
+    return next();
+  }
+  next({
+    status: 404,
+    message: `History not found '${user_id}'.`,
+  });
+}
 module.exports = {
   list,
   read: [asyncErrorBoundary(historyExists), read],
-  read2: [asyncErrorBoundary(historyExists2), read],
-  update: [asyncErrorBoundary(update)],
+  read2: [asyncErrorBoundary(historyExists2), read2],
+  update: [
+    asyncErrorBoundary(historyExists3),
+    hasRequiredProperties,
+    asyncErrorBoundary(update),
+  ],
   create: [
     hasData,
     hasRequiredProperties,

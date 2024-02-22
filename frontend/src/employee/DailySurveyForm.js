@@ -17,26 +17,26 @@ function DailySurveyForm() {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const { userId } = useParams();
-  
+
   let strategyType;
   function handleInput(event) {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: Number(event.target.value),
     });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     strategyType = getStrategySuggestions(formData);
-    console.log("strategyType is: ", strategyType)
-    
+    console.log("strategyType is: ", strategyType);
+
     setFormData({
       ...formData,
-      track_focus_area: strategyType
-    })
+      track_focus_area: strategyType,
+    });
 
-    console.log("formData after we attempt to set strategy: ", formData)
+    console.log("formData after we attempt to set strategy: ", formData);
     try {
       await createSurvey(formData, userId);
       localStorage.setItem("surveyComplete", "true");
@@ -153,7 +153,10 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="btn bg-turqoise hover:bg-sky-400 text-white px-9 mr-3">
+          <button
+            type="submit"
+            className="btn bg-turqoise hover:bg-sky-400 text-white px-9 mr-3"
+          >
             Submit
           </button>
           <button
@@ -171,7 +174,6 @@ function DailySurveyForm() {
         )}
       </form>
     </div>
-  
   );
 }
 
