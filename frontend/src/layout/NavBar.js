@@ -22,7 +22,7 @@ function NavBar() {
         <>
           <div className="navbar-start">
             <button
-              className="btn bg-dark-purple text-white hover:bg-violet-800 px-4"
+              className="btn bg-turqoise text-white hover:bg-violet-800 px-16 mx-auto"
               onClick={() => navigate('/admin/add')}
             >
               Add
@@ -38,7 +38,7 @@ function NavBar() {
           </div>
           <div className="navbar-end">
             <button
-              className="btn bg-dark-purple text-white hover:bg-violet-800 px-9"
+              className="btn bg-dark-purple text-white hover:bg-violet-800 px-14 mx-auto"
               onClick={handleLogout}
             >
               Logout

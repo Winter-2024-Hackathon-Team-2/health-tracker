@@ -36,7 +36,7 @@ function Surveyboard() {
     <main>
       <div
         id="header"
-        className="flex flex-col justify-center lg:flex-row items-center p-4 bg-teal-500 "
+        className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-200 "
       >
         <label htmlFor="reservation_date">
           <h1

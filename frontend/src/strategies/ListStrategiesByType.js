@@ -29,8 +29,11 @@ export default function ListStrategiesByType() {
     return (
       <>
       <section className="flex flex-col item-center text-center">
+
       <h3 className="text-3xl pt-8 pb-3">Moodscape Recommends</h3>
       <p className="pb-8">Based on your survey, we've provided suggestions for {strategyType}.</p>
+
+
         <StrategiesList strategies={strategies} />
         </section>
       </>
