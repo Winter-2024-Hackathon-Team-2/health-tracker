@@ -33,7 +33,7 @@ function Surveyboard() {
   
   
   return (
-    <main>
+    <main className="max-w-screen-xl flex flex-col mx-auto">
       <div
         id="header"
         className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-200 "
