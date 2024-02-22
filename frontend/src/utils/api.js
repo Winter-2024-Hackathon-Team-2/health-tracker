@@ -124,12 +124,8 @@ export async function deleteSurvey(activityId) {
   return await fetchJson(url, { method: "DELETE", headers }, {});
 }
 
-export async function listStrategies(params, signal) {
+export async function listStrategies(signal) {
   const url = new URL(`${API_BASE_URL}/strategies`);
-  Object.entries(params).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
-  );
-  console.log(url);
   return await fetchJson(url, { headers, signal }, []);
 }
 
