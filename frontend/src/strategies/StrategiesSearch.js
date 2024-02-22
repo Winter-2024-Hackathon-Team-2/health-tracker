@@ -45,8 +45,8 @@ export default function StrategiesSearch() {
 
   return (
     <>
-      <section>
-        <form>
+      <section className="flex flex-col item-center text-center">
+        <form className="my-2">
           <label htmlFor="strategyFilter">
             <input
               id="strategyFilter"
@@ -55,13 +55,16 @@ export default function StrategiesSearch() {
               placeholder="Filter"
               value={strategyFilter}
               onChange={handleChange}
+              className="input input-bordered w-full max-w-xs mx-2"
               required
             ></input>
-            <button onClick={reset}>Reset</button>
+            <button onClick={reset} className="btn bg-turqoise px-9 my-4">Reset</button>
           </label>
         </form>
+        <div className="my-3">
       {strategiesError && <p>{strategiesError.message}</p>}
        {strategyFilter ? <StrategiesList strategies={filteredData} /> : <StrategiesList strategies={strategies} />}
+       </div>
       </section>
     </>
   );
