@@ -10,12 +10,14 @@ function DailySurveyForm() {
     track_sleep_duration: 0,
     track_sleep_quality: 0,
     track_stress_level: 0,
+    track_focus_area: null,
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const { userId } = useParams();
+  
   let strategyType;
   function handleInput(event) {
     setFormData({
@@ -27,6 +29,14 @@ function DailySurveyForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     strategyType = getStrategySuggestions(formData);
+    console.log("strategyType is: ", strategyType)
+    
+    setFormData({
+      ...formData,
+      track_focus_area: strategyType
+    })
+
+    console.log("formData after we attempt to set strategy: ", formData)
     try {
       await createSurvey(formData, userId);
       localStorage.setItem("surveyComplete", "true");
@@ -38,7 +48,7 @@ function DailySurveyForm() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-full">
+    <div className="flex items-center justify-center min-h-full md:pt-20">
       <form
         onSubmit={handleSubmit}
         className="w-1/2 bg-gray-100 p-8 rounded-lg shadow-md"
@@ -143,12 +153,12 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="btn bg-purple-500 text-white mr-3">
+          <button type="submit" className="btn bg-turqoise hover:bg-sky-400 text-white px-9 mr-3">
             Submit
           </button>
           <button
             type="button"
-            className="btn bg-dark-purple text-white mr-3"
+            className="btn border-black bg-gray-400 mr-3 px-9"
             onClick={() => navigate(`/strategies/${strategyType}`)}
           >
             Cancel
@@ -161,6 +171,7 @@ function DailySurveyForm() {
         )}
       </form>
     </div>
+  
   );
 }
 

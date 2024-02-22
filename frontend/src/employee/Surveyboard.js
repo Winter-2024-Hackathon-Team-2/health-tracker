@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { listHistory } from "../utils/api";
+import { listHistory, readUserHistory } from "../utils/api";
 import Surveys from "./Surveys";
 import ErrorAlert from "../layout/ErrorAlert";
 
@@ -16,23 +16,21 @@ function Surveyboard() {
   const [surveys, setSurveys] = useState([]);
   const [error, setError] = useState(null);
 
+  const userId = localStorage.getItem("userId");
+
   useEffect(loadSurveyboard, []);
 
   function loadSurveyboard() {
     const abortController = new AbortController();
     setError(null);
-    listHistory(abortController.signal).then(setSurveys).catch(setError);
+    readUserHistory(userId, abortController.signal)
+      .then(setSurveys)
+      .catch(setError);
     return () => abortController.abort();
   }
-  let { userId } = useParams();
-  let items = [];
-  if (userId) {
-    // eslint-disable-next-line eqeqeq
-    items = surveys.filter((r) => r.user_id == userId);
-  }
-  if (!userId) {
-    items = surveys;
-  }
+
+  let items = surveys.filter((survey) => (survey.user_id = userId));
+
   return (
     <main>
       <div
@@ -44,7 +42,7 @@ function Surveyboard() {
             id="header-text"
             className="text-4xl sm:text-4xl m-1 font-bold text-black"
           >
-            Current Surveys:
+            {`user ${userId}'s Survey History`}
           </h1>
         </label>
 

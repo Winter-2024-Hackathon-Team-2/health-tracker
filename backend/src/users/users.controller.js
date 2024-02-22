@@ -18,7 +18,7 @@ async function update(req, res) {
   };
   const data = await userService.update(updatedUser);
 
-  console.log(data);
+  console.log("update function from user route: ", data);
   res.json({ data });
 }
 
@@ -52,7 +52,7 @@ function hasData(req, res, next) {
 
 async function create(req, res) {
   let data = await userService.create(req.body.data);
-  console.log(data);
+  console.log("create user route: ", data);
   res.status(201).json({ data });
 }
 

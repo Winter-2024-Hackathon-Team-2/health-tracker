@@ -35,9 +35,11 @@ function LoginPage() {
       const userData = await login(username, password);
       console.log('User logged in:', userData);
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem("userId", username)
       if (userData.is_admin) {
         localStorage.setItem('is_admin', 'true');
         navigate('/admin')
+        window.location.reload();
       }
       else {
         navigate(`/track/${username}/new`)
@@ -56,10 +58,8 @@ function LoginPage() {
     <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
       <div className='w-full bg-gray-200 rounded-lg shadow md:mt-0 sm:max-w-sm xl:p-0'>
         <div className='p-6 space-y-2 md:space-y-2 sm:p-4 flex flex-col justify-center items-center'>
-        <img src={moodscapev2} alt="Logo" className="w-32 mb-1" />
-          <h2 className='text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl'>
-            Login
-          </h2>
+        <img src={moodscapev2} alt="Logo" className="w-52 mb-1 pt-2" />
+
           <form onSubmit={handleSubmit} className='space-y-4 md:space-y-6'>
             <div>
               <label htmlFor="username" className='block mb-2 text-sm font-medium text-gray-900'>Username:</label>
@@ -85,7 +85,7 @@ function LoginPage() {
             </div>
             {error && <p className="text-red-500">{error}</p>}
             <div className='text-center py-3'>
-              <button type="submit" className='btn btn-info btn-wide text-center self-center'>Login</button>
+              <button type="submit" className='btn bg-turqoise text-white hover:bg-info btn-wide text-center self-center'>Login</button>
             </div>
           </form>
         </div>
