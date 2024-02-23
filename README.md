@@ -13,12 +13,12 @@
 
 ## Contributors
 
-[Aaron Jazzar - Software Engineer](https://github.com/ajazzar)
-[Angelo Kitio - Data Analyst](https://github.com/AngeloKItio)
-[Brian Stasiukaitis - Software Engineer](https://github.com/BrianStas)
-[Devina Gillis - Software Engineer](https://github.com/DevinaG007)
-[Elena Kirzhner - Data Analyst](https://github.com/elenadesigner)
-[Rouzbeh Vahdatiasl - Software Engineer](https://github.com/Rouz275)
+- [Aaron Jazzar - Software Engineer](https://github.com/ajazzar)
+- [Angelo Kitio - Data Analyst](https://github.com/AngeloKItio)
+- [Brian Stasiukaitis - Software Engineer](https://github.com/BrianStas)
+- [Devina Gillis - Software Engineer](https://github.com/DevinaG007)
+- [Elena Kirzhner - Data Analyst](https://github.com/elenadesigner)
+- [Rouzbeh Vahdatiasl - Software Engineer](https://github.com/Rouz275)
 
 
 ## Setup Instructions
@@ -32,12 +32,13 @@
 - use ```npm run start:frontend``` and ```npm run start:backend``` respectively to run either the frontend **or** the backend
   
 - To Demo the login, use the following login information:
+- 
 
-Employee Username: 11 
-Employee Password: 97273f94-697c-420c-8820-5f0703278e90
+**Employee Username:** 11 
+**Employee Password:** 97273f94-697c-420c-8820-5f0703278e90
 
-Admin Username: 4
-Admin Password: 89c35cb0-bf4a-47e0-82f5-ddcb41c8337b
+**Admin Username:** 4
+**Admin Password:** 89c35cb0-bf4a-47e0-82f5-ddcb41c8337b
 
 
 ## Frontend Layout
