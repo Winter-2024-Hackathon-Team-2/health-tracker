@@ -32,7 +32,7 @@
 - use ```npm run start:frontend``` and ```npm run start:backend``` respectively to run either the frontend **or** the backend
   
 - To Demo the login, use the following login information:
-- 
+  
 
 **Employee Username:** 11 
 **Employee Password:** 97273f94-697c-420c-8820-5f0703278e90
