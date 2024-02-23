@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 import EditSurvey from "./EditSurvey";
+import getMoodEmoji from "../utils/getMoodEmoji";
 const SurveyCard = ({ survey }) => {
   const months = [
     "January",
@@ -22,11 +23,14 @@ const SurveyCard = ({ survey }) => {
   return (
     <>
       {survey && (
-        <div className="collapse collapse-arrow bg-base-200">
+        <div className="collapse collapse-arrow bg-base-200 w-96">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium">
+          <div className="collapse-title text-xl font-medium text-left">
             <p>Date: {`${readableDate}`}</p>
+            <div className="flex flex-row justify-between items-center">
             <p>Work Stress: {survey.track_stress_level}</p>
+            <img src={getMoodEmoji(survey.track_stress_level)} alt="mood-emoji" width="30"/>
+            </div>
             <p>Focus Area: {survey.track_focus_area}</p>
           </div>
           <div className="collapse-content">

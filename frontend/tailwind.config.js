@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const default_theme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -12,6 +14,9 @@ module.exports = {
         'custom-navy': '#063372',
         'eggshell': '#E6F2FE',
         'green-blue': '#088A9B',
+      },
+      fontFamily: {
+        'sans': ['Poppins', ...default_theme.fontFamily.sans],
       },
     },
   },

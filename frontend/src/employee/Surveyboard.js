@@ -32,10 +32,10 @@ function Surveyboard() {
   let items = surveys.filter((survey) => (survey.user_id = userId));
 
   return (
-    <main>
+    <main className="max-w-screen-xl flex flex-col mx-auto">
       <div
         id="header"
-        className="flex flex-col justify-center lg:flex-row items-center p-4 bg-teal-500 "
+        className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-200 "
       >
         <label htmlFor="reservation_date">
           <h1

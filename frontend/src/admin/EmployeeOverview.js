@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { listUsers } from "../utils/api";
+import ErrorAlert from "../layout/ErrorAlert";
 
 const API_BASE_URL = "http://localhost:5001";
 
@@ -10,7 +11,7 @@ function EmployeeOverview() {
     key: null,
     direction: "ascending",
   });
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(loadEmployees, []);
@@ -19,30 +20,28 @@ function EmployeeOverview() {
     const abortController = new AbortController();
     setError(null);
     listUsers(abortController.signal)
-    .then(setEmployees)
-    .catch(setError);
+      .then(setEmployees)
+      .catch(setError);
     return () => abortController.abort();
   }
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    navigate("/admin/add");
-  };
-
   const handleDelete = (userId) => {
-    fetch(`${API_BASE_URL}/users/${userId}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          setEmployees((prevEmployees) =>
-            prevEmployees.filter((employee) => employee.user_id !== userId)
-          );
-        } else {
-          console.error("Failed to delete employee");
-        }
+    const isConfirmed = window.confirm("Are you sure you want to delete this employee?");
+    if (isConfirmed) {
+      fetch(`${API_BASE_URL}/users/${userId}`, {
+        method: "DELETE",
       })
-      .catch((error) => console.error("Error deleting employee:", error));
+        .then((response) => {
+          if (response.ok) {
+            setEmployees((prevEmployees) =>
+              prevEmployees.filter((employee) => employee.user_id !== userId)
+            );
+          } else {
+            console.error("Failed to delete employee");
+          }
+        })
+        .catch((error) => console.error("Error deleting employee:", error));
+    }
   };
 
   const handleSort = (key) => {
@@ -73,13 +72,17 @@ function EmployeeOverview() {
   };
 
   return (
-    <div>
-        <button
-          onClick={handleClick}
-          className="bg-gray border border-gray-200 px-2 py-2 rounded hover:bg-gray-50 mt-4 mb-4"
-        >
-          Add
-        </button>
+    <main className="max-w-screen-xl flex flex-col mx-auto">
+      <div className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-100">
+        <label htmlFor="employee_overview">
+          <h1 className="text-4xl sm:text-4xl m-1 font-bold text-dark-purple">
+            Employee Overview
+          </h1>
+        </label>
+      </div>
+
+      <ErrorAlert error={error} />
+
       <table className="table">
         <thead>
           <tr className="border border-gray-300 p-4 mb-6" style={{ fontSize: "1.5em" }}>
@@ -119,7 +122,7 @@ function EmployeeOverview() {
                 Admin{" "}
               </button>
             </th>
-            {/* Any other categories */}
+            <th>Remove</th>
           </tr>
         </thead>
         <tbody>
@@ -130,7 +133,10 @@ function EmployeeOverview() {
               <td>{employee.user_age}</td>
               <td>{employee.is_admin === true ? "Yes" : "No"}</td>
               <td>
-                <button onClick={() => handleDelete(employee.user_id)}>
+                <button 
+                  onClick={() => handleDelete(employee.user_id)}
+                  className="btn btn-red"
+                >
                   Delete
                 </button>
               </td>
@@ -138,7 +144,7 @@ function EmployeeOverview() {
           ))}
         </tbody>
       </table>
-    </div>
+    </main>
   );
 }
 
