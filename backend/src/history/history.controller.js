@@ -84,7 +84,7 @@ async function read2(req, res) {
     user_id: req.params.user_id,
   };
   console.log("this is working", newHistory.user_id);
-  let data = await historyService.read3(newHistory.user_id);
+  let data = await historyService.read2(newHistory.user_id);
   console.log("data2 field: ", data);
   res.json({ data });
 }
