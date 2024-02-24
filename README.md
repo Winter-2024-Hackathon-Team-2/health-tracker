@@ -1,16 +1,25 @@
-# health-tracker
+
+![moodscapename](https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/cc189057-194b-42cc-8263-906aa697d39e)
 
 <hr>
 
 ## Useful Links
 
+[Moodscape Live Application](https://health-tracker-ov9u.onrender.com/strategies)
+
+[GitHub Repository](https://github.com/Winter-2024-Hackathon-Team-2/health-tracker)
+
 [Hackathon Description & Brief](https://chegg-my.sharepoint.com/:w:/p/bfontourasutliff/EfCAsLdWUHxGhmIur4bgq3kBTIXHMEI_J1lwWLrJCiV38A?rtime=biJ833It3Eg)
 
-[Coping Strategies](https://chegg-my.sharepoint.com/:w:/p/bfontourasutliff/EYWsj-4646NGsWdsfRgeBU8Bq1vg3VE9Rw4vAnk47GbOvQ?e=uhR8Wy)
+## Contributors
 
-[User Personas](https://chegg-my.sharepoint.com/:w:/p/bfontourasutliff/EeVIi-q-tK5LrIlkipHy7AEBYS4AlFKyu1SsdLmAd32J_w?e=MF46HP)
+- [Aaron Jazzar - Software Engineer](https://github.com/ajazzar)
+- [Angelo Kitio - Data Analyst](https://github.com/AngeloKItio)
+- [Brian Stasiukaitis - Software Engineer](https://github.com/BrianStas)
+- [Devina Gillis - Software Engineer](https://github.com/DevinaG007)
+- [Elena Kirzhner - Data Analyst](https://github.com/elenadesigner)
+- [Rouzbeh Vahdatiasl - Software Engineer](https://github.com/Rouz275)
 
-[User Stories](https://chegg-my.sharepoint.com/:w:/p/bfontourasutliff/EWRPN00sWthOlOit4rmVkvUBXfJhUMNtZb6rwxs1yK8X1A?e=VbUin1)
 
 ## Setup Instructions
 
@@ -21,16 +30,60 @@
 - Use ```npm run start:dev``` from the root directory to run **both** the frontend and the backend server
   
 - use ```npm run start:frontend``` and ```npm run start:backend``` respectively to run either the frontend **or** the backend
+  
+- To Demo the login, use the following login information:
+  
+
+**Employee Username:** 11 
+**Employee Password:** 97273f94-697c-420c-8820-5f0703278e90
+
+**Admin Username:** 4
+**Admin Password:** 89c35cb0-bf4a-47e0-82f5-ddcb41c8337b
 
 
-## Collaboration Best Practices
+## Frontend Layout
+<hr>
 
-- Before making changes to the code, run ```git pull``` to ensure your local code is up-to-date.
+### Login Page
 
-- Create a new branch before editing the project. Use ```git checkout -b <name-of-branch>``` to create a branch and switch to the newly created branch.
+<img width="1464" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/f45b8324-1ff2-4281-bf01-e5c019be7213">
 
-- Stage and commit changes often, so that you can revert to a previous commit if need be. 
+## Employee Flow
 
-- When you are finished with your changes, push the code in your branch to the remote version of your branch in GitHub.
+### Daily Survey
 
-- Go to the ```Pull Requests``` tab in the repository, and create a new pull request for the branch you've created. Add any details about the changes you've made, and you can assign someone to review the pull request before it gets merged to main.
+<img width="1448" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/2b4f4a65-9196-4160-a285-0d7fca346832">
+
+### Moodscape Recommends 
+
+<img width="1465" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/1ddc5252-9893-41b0-98db-d3c05748b1f6">
+
+### Filter Coping Strategies
+
+<img width="1462" alt="Screenshot 2024-02-22 at 7 54 00 AM" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/21574413-0a18-4d8e-b69e-0ddf39721744">
+
+### View History
+
+<img width="1460" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/125ebad0-d103-4404-bc2a-caed3e00cadf">
+
+## Employer/Admin Flow
+
+### Employee Overview
+
+<img width="1461" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/fddd25ca-d546-4de2-82c0-d926ca1f7ff8">
+
+### Add A New Employee
+
+<img width="1464" alt="image" src="https://github.com/Winter-2024-Hackathon-Team-2/health-tracker/assets/137969744/c3ffb999-8e78-4848-b570-6a02e63c9ea4">
+
+<hr>
+
+## Backend API Routes
+
+- ```/track``` - List of all survey history for all users
+- ```/track/:userId``` - Retrieve survey history by user
+- ```/users``` - List of all users
+- ```/users/login``` -Login route for users (employees and admins)
+- ```/users/:userId``` - Retrieves user information based on userId
+- ```/strategies``` - List of all coping strategies
+- ```/strategies/:strategyType``` - Retrieves a list of strategies by strategyType based on user's survey

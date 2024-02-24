@@ -21,11 +21,11 @@ function LoginPage() {
   /*Test cases for Login:
   Admin
   username: 4
-  password: 97273f94-697c-420c-8820-5f0703278e90
+  password: 89c35cb0-bf4a-47e0-82f5-ddcb41c8337b
 
   User
   Username: 11
-  Password: ad501149-a265-4df9-853b-e796efeee079
+  Password: 97273f94-697c-420c-8820-5f0703278e90
   */
 
   const handleSubmit = async (event) => {
