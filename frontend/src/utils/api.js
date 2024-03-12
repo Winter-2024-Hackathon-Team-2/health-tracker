@@ -87,12 +87,12 @@ export async function listHistory(signal) {
   return await fetchJson(url, { headers, signal }, []);
 }
 
-export async function createSurvey(data, userId, signal) {
+export async function createSurvey(data, userId, strategyType, signal) {
   const url = `${API_BASE_URL}/track/${userId}/new`;
   const options = {
     method: "POST",
     headers,
-    body: JSON.stringify({ data }),
+    body: JSON.stringify({ data: {...data, track_focus_area: strategyType} }),
     signal,
   };
   return await fetchJson(url, options, {});

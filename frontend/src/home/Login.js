@@ -26,6 +26,7 @@ function LoginPage() {
   User
   Username: 11
   Password: 97273f94-697c-420c-8820-5f0703278e90
+  Password for Development: ad501149-a265-4df9-853b-e796efeee079
   */
 
   const handleSubmit = async (event) => {

@@ -5,12 +5,13 @@ import getStrategySuggestions from "../utils/getStrategySuggestions";
 import { createSurvey } from "../utils/api";
 
 function DailySurveyForm() {
+  let strategyType;
   const initialFormData = {
     track_physical_activity: 0,
     track_sleep_duration: 0,
     track_sleep_quality: 0,
     track_stress_level: 0,
-    track_focus_area: null,
+    // track_focus_area: strategyType,
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
@@ -18,7 +19,7 @@ function DailySurveyForm() {
 
   const { userId } = useParams();
   
-  let strategyType;
+
   function handleInput(event) {
     setFormData({
       ...formData,
@@ -31,14 +32,14 @@ function DailySurveyForm() {
     strategyType = getStrategySuggestions(formData);
     console.log("strategyType is: ", strategyType)
     
-    setFormData({
-      ...formData,
-      track_focus_area: strategyType
-    })
+    // setFormData({
+    //   ...formData,
+    //   track_focus_area: strategyType
+    // })
 
     console.log("formData after we attempt to set strategy: ", formData)
     try {
-      await createSurvey(formData, userId);
+      await createSurvey(formData, userId, strategyType);
       localStorage.setItem('surveyComplete', 'true');
       setFormData(initialFormData);
       navigate(`/strategies/${strategyType}`);
