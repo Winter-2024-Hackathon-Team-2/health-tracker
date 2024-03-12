@@ -13,9 +13,9 @@ const SurveyCard = ({ survey }) => {
       {survey && (
         <div className="collapse collapse-arrow bg-base-200 w-96">
           <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium text-left">
+          <div className="collapse-title text-xl text-left fontFamily-sans">
             <p>Date: {`${readableDate}`}</p>
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row justify-between items-center fontFamily-sans">
             <p>Work Stress: {survey.track_stress_level}</p>
             <img src={getMoodEmoji(survey.track_stress_level)} alt="mood-emoji" width="30"/>
             </div>

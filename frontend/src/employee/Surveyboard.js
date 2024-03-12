@@ -9,7 +9,7 @@ import "../layout/Layout";
 /**
  * Defines the dashboard page.
  * @param date
- *  the date for which the user wants to view reservations.
+ *  the date for which the user wants to view history
  * @returns {JSX.Element}
  */
 function Surveyboard() {
@@ -38,12 +38,12 @@ function Surveyboard() {
         id="header"
         className="flex flex-col justify-center lg:flex-row items-center p-4 bg-sky-200 "
       >
-        <label htmlFor="reservation_date">
+        <label htmlFor="header-text">
           <h1
             id="header-text"
-            className="text-4xl sm:text-4xl m-1 font-bold text-black"
+            className="text-4xl sm:text-4xl m-1 fontFamily-sans text-dark-purple"
           >
-            {`user ${userId}'s Survey History`}
+            {`Survey History`}
           </h1>
         </label>
 
