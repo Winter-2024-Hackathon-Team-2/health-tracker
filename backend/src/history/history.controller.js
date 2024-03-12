@@ -19,12 +19,13 @@ function historyExists(req, res, next) {
 
 function inputIsValid(req, res, next) {
   const { data = {} } = req.body;
+  console.log(data)
   for (let [key, value] of Object.entries(data)) {
-    if (key !== "track_physical_activity") {
+    if (key !== "track_physical_activity" && key !== "track_focus_area") {
       if (value < 1 || value > 10) {
         next({
           status: 400,
-          message: `Invalid input. Input must be between 1 and 10.`,
+          message: `Invalid input. ${key} must be between 1 and 10.`,
         });
       }
     }
@@ -46,7 +47,6 @@ function physicalActivityIsValid(req, res, next) {
 
 async function historyExists2(req, res, next) {
   const history = await historyService.read2(req.params.user_id);
-  console.log("history2 fires");
   if (history) {
     res.locals.history = history;
     return next();
@@ -66,7 +66,6 @@ function hasData(req, res, next) {
 }
 
 function list(req, res, next) {
-  console.log("list is firing")
   historyService
     .list()
     .then((data) => res.json({ data }))
@@ -74,7 +73,6 @@ function list(req, res, next) {
 }
 
 function read(req, res) {
-  console.log("wrong read is firing")
   const { history: data } = res.locals;
   res.json({ data });
 }
@@ -83,7 +81,6 @@ async function read2(req, res) {
   let newHistory = {
     user_id: req.params.user_id,
   };
-  console.log("this is working", newHistory.user_id);
   let data = await historyService.read3(newHistory.user_id);
   console.log("data2 field: ", data)
   res.json({ data });
