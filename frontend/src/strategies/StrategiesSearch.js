@@ -20,7 +20,6 @@ export default function StrategiesSearch() {
     const abortController = new AbortController();
     listStrategies(abortController.signal)
       .then(setStrategies)
-      .then((data)=>console.log("strategies being returned: ", strategies))
       .catch(setStrategiesError);
     return ()=> abortController.abort();
   }
