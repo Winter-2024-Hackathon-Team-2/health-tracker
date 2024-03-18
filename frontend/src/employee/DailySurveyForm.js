@@ -11,7 +11,6 @@ function DailySurveyForm() {
     track_sleep_duration: 0,
     track_sleep_quality: 0,
     track_stress_level: 0,
-    // track_focus_area: strategyType,
   };
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialFormData);
@@ -30,14 +29,6 @@ function DailySurveyForm() {
   async function handleSubmit(event) {
     event.preventDefault();
     strategyType = getStrategySuggestions(formData);
-    console.log("strategyType is: ", strategyType)
-    
-    // setFormData({
-    //   ...formData,
-    //   track_focus_area: strategyType
-    // })
-
-    console.log("formData after we attempt to set strategy: ", formData)
     try {
       await createSurvey(formData, userId, strategyType);
       localStorage.setItem('surveyComplete', 'true');
@@ -49,18 +40,18 @@ function DailySurveyForm() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-full md:pt-20">
+    <div className="flex items-center justify-center min-h-full md:py-20">
       <form
         onSubmit={handleSubmit}
         className="w-1/2 bg-gray-100 p-8 rounded-lg shadow-md"
       >
-        <h1 className="text-2xl font-bold mb-4 text-center">Daily Survey</h1>
+        <h1 className="text-2xl text-bold mb-4 text-center">Daily Survey</h1>
         <div className="form-group mb-4">
           <label
             htmlFor="track_physical_activity"
             className="block text-gray-700 font-bold mb-2"
           >
-            Sleep Quality
+            On a scale of 1 to 10, how well did you sleep?
           </label>
           <input
             type="range"
@@ -92,7 +83,7 @@ function DailySurveyForm() {
             htmlFor="track_sleep_duration"
             className="block text-gray-700 font-bold mb-2"
           >
-            Hours Slept
+            How many hours did you sleep?
           </label>
           <input
             type="number"
@@ -109,7 +100,7 @@ function DailySurveyForm() {
             htmlFor="track_physical_activity"
             className="block text-gray-700 font-bold mb-2"
           >
-            Time spent active
+           How many minutes did you spend being physically active?
           </label>
           <input
             type="number"
@@ -126,7 +117,7 @@ function DailySurveyForm() {
             htmlFor="track_stress_level"
             className="block text-gray-700 font-bold mb-2"
           >
-            Work Stress
+           On a scale from 1 to 10, how stressed were you from work?
           </label>
           <input
             type="range"
@@ -154,12 +145,12 @@ function DailySurveyForm() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="btn bg-turqoise hover:bg-sky-400 text-white px-9 mr-3">
+          <button type="submit" className="btn bg-turqoise hover:bg-sky-400 border-0 text-off-white px-9 mr-3">
             Submit
           </button>
           <button
             type="button"
-            className="btn border-black bg-gray-400 mr-3 px-9"
+            className="btn border-black bg-gray-400 text-off-white border-0 mr-3 px-9"
             onClick={() => navigate(`/strategies/${strategyType}`)}
           >
             Cancel
