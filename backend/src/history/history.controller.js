@@ -19,7 +19,6 @@ function historyExists(req, res, next) {
 
 function inputIsValid(req, res, next) {
   const { data = {} } = req.body;
-  console.log(data)
   for (let [key, value] of Object.entries(data)) {
     if (key !== "track_physical_activity" && key !== "track_focus_area") {
       if (value < 1 || value > 10) {
@@ -82,7 +81,6 @@ async function read2(req, res) {
     user_id: req.params.user_id,
   };
   let data = await historyService.read3(newHistory.user_id);
-  console.log("data2 field: ", data)
   res.json({ data });
 }
 

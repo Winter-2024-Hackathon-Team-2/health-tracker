@@ -5,6 +5,7 @@ import Surveys from "./Surveys";
 import ErrorAlert from "../layout/ErrorAlert";
 
 import "../layout/Layout";
+import MoodTrackingCalendar from "./MoodTrackingCalendar";
 
 /**
  * Defines the dashboard page.
@@ -55,6 +56,7 @@ function Surveyboard() {
 
       <ErrorAlert error={error} />
       <Surveys surveys={items} />
+      {/* <MoodTrackingCalendar surveys={items} /> */}
     </main>
   );
 }
