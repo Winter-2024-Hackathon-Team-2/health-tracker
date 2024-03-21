@@ -28,7 +28,7 @@ export default function ListStrategiesByType() {
   if (strategies.length) {
     return (
       <>
-      <section className="flex flex-col item-center text-center">
+      <section className="flex flex-col item-center text-center py-10">
 
       <h3 className="text-3xl pt-8 pb-3">Moodscape Recommends</h3>
       <p className="pb-8">Based on your survey, we've provided suggestions for {strategyType}.</p>

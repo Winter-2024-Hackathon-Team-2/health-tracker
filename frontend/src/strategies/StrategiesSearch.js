@@ -44,7 +44,7 @@ export default function StrategiesSearch() {
 
   return (
     <>
-      <section className="flex flex-col item-center text-center">
+      <section className="flex flex-col item-center text-center py-10">
         <form className="my-2">
           <label htmlFor="strategyFilter">
             <input
